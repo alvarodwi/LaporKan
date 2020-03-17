@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/itemTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTanggal"
+                style="@style/DefaultTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                tools:text="Senin, 24 Februari 2020" />
+
+            <TextView
+                android:id="@+id/tvJudul"
+                style="@style/DefaultTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlueText"
+                android:textSize="18sp"
+                tools:text="PDAM Kok Mati!!" />
+
+            <TextView
+                android:id="@+id/tvPembuat"
+                style="@style/DefaultTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                tools:text="Dibuat oleh Anda" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgItem"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@color/colorBlueText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemTextContainer" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemFooter"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorAccent"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgItem">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/DefaultTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Dibuat oleh Anda" />
+
+            <TextView
+                android:id="@+id/tvStatTanggapan"
+                style="@style/DefaultTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2 Tanggapan" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

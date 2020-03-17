@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.report.PreviewReportFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        style="@style/redToolbar"
+        android:layout_height="?attr/actionBarSize">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="Buat Report"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/labelTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Data yang akan dicetak"
+        style="@style/DefaultTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/appToolbar"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelTop"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/itemTextContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Report Bulanan" />
+
+                <TextView
+                    android:id="@+id/tvJudul"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    tools:text="Januari 2020" />
+
+                <TextView
+                    android:id="@+id/tvPembuat"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="Report ini dibuat oleh Admin" />
+                <TextView
+                    android:id="@+id/tvTanggalDibuat"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="Pada tanggal 3 Februari 2020" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    />
+
+                <TextView
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="Statistik" />
+
+                <TextView
+                    android:id="@+id/tvLaporanSemua"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="Dari 20 laporan yang dibuat di bulan ini" />
+
+                <TextView
+                    android:id="@+id/tvLaporanSelesai"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp"
+                    tools:text="5 laporan selesai" />
+                <TextView
+                    android:id="@+id/tvLaporanProses"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp"
+                    tools:text="12 laporan masih dalam proses" />
+                <TextView
+                    android:id="@+id/tvLaporanBaru"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp"
+                    tools:text="1 laporan belum divalidasi" />
+                <TextView
+                    android:id="@+id/tvLaporanGagal"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp"
+                    tools:text="2 laporan gagal validasi" />
+
+                <TextView
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="Kontributor" />
+                <TextView
+                    android:id="@+id/tvKontributor"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="4 masyarakat berkontribusi di bulan ini" />
+                <TextView
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="Respons" />
+                <TextView
+                    android:id="@+id/tvRespons"
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="2 petugas memberi tanggapan di bulan ini" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/btnContainer"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/btnCetakReport"
+            style="@style/redButton"
+            android:elevation="5dp"
+            android:text="Cetak Report"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

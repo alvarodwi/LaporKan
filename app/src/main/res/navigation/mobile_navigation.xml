@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/buatLaporanLampiran">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.pedo.laporkan.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerDataFragment"
+            app:destination="@id/registerDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/berandaFragment"
+        android:name="com.pedo.laporkan.ui.beranda.BerandaFragment"
+        android:label="fragment_beranda"
+        tools:layout="@layout/fragment_beranda">
+        <action
+            android:id="@+id/action_berandaFragment_to_daftarLaporanFragment"
+            app:destination="@id/daftarLaporanFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_daftarReportFragment"
+            app:destination="@id/daftarReportFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_buatLaporanTulisan"
+            app:destination="@id/buatLaporanTulisan" />
+    </fragment>
+    <fragment
+        android:id="@+id/daftarLaporanFragment"
+        android:name="com.pedo.laporkan.ui.laporan.listing.DaftarLaporanFragment"
+        android:label="fragment_daftar_laporan"
+        tools:layout="@layout/fragment_daftar_laporan">
+        <action
+            android:id="@+id/action_daftarLaporanFragment_to_detailLaporanFragment"
+            app:destination="@id/detailLaporanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kodeAdminFragment"
+        android:name="com.pedo.laporkan.ui.register.kodeAdmin.KodeAdminFragment"
+        android:label="fragment_kode_admin"
+        tools:layout="@layout/fragment_kode_admin" >
+        <action
+            android:id="@+id/action_kodeAdminFragment_to_registerDataFragment"
+            app:destination="@id/registerDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailLaporanFragment"
+        android:name="com.pedo.laporkan.ui.laporan.detail.DetailLaporanFragment"
+        android:label="fragment_detail_laporan"
+        tools:layout="@layout/fragment_detail_laporan">
+        <action
+            android:id="@+id/action_detailLaporanFragment_to_detailTanggapan"
+            app:destination="@id/detailTanggapan" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTanggapan"
+        android:name="com.pedo.laporkan.ui.tanggapan.detail.DetailTanggapanFragment"
+        android:label="fragment_detail_tanggapan"
+        tools:layout="@layout/fragment_detail_tanggapan" />
+    <fragment
+        android:id="@+id/daftarReportFragment"
+        android:name="com.pedo.laporkan.ui.report.DaftarReportFragment"
+        android:label="fragment_daftar_report"
+        tools:layout="@layout/fragment_daftar_report" >
+        <action
+            android:id="@+id/action_daftarReportFragment_to_previewReportFragment"
+            app:destination="@id/previewReportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewReportFragment"
+        android:name="com.pedo.laporkan.ui.report.PreviewReportFragment"
+        android:label="fragment_preview_report"
+        tools:layout="@layout/fragment_preview_report" />
+    <fragment
+        android:id="@+id/registerDataFragment"
+        android:name="com.pedo.laporkan.ui.register.RegisterDataFragment"
+        android:label="fragment_register_data"
+        tools:layout="@layout/fragment_register_data" >
+        <action
+            android:id="@+id/action_registerDataFragment_to_registerAkunFragment"
+            app:destination="@id/registerAkunFragment" />
+        <action
+            android:id="@+id/action_registerDataFragment_to_kodeAdminFragment"
+            app:destination="@id/kodeAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerAkunFragment"
+        android:name="com.pedo.laporkan.ui.register.RegisterAkunFragment"
+        android:label="RegisterAkunFragment"
+        tools:layout="@layout/fragment_register_akun"
+        >
+        <action
+            android:id="@+id/action_registerAkunFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buatLaporanTulisan"
+        android:name="com.pedo.laporkan.ui.laporan.buat.BuatLaporanTulisanFragment"
+        android:label="fragment_buat_laporan_tulisan"
+        tools:layout="@layout/fragment_buat_laporan_tulisan" >
+        <action
+            android:id="@+id/action_buatLaporanTulisan_to_buatLaporanLampiran"
+            app:destination="@id/buatLaporanLampiran" />
+    </fragment>
+    <fragment
+        android:id="@+id/buatLaporanLampiran"
+        android:name="com.pedo.laporkan.ui.laporan.buat.BuatLaporanLampiranFragment"
+        android:label="fragment_buat_laporan_lampiran"
+        tools:layout="@layout/fragment_buat_laporan_lampiran" />
+</navigation>

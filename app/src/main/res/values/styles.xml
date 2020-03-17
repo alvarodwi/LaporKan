@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorBlueText</item>
+    </style>
+
+    <style name="DefaultTextStyle" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="InputTextViewGray" parent="DefaultTextStyle">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextClickable" parent="DefaultTextStyle">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextGrayInfo" parent="DefaultTextStyle">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="redToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="navigationIcon">@drawable/ic_arrow_left</item>
+        <item name="titleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="redButton" parent="TextAppearance.AppCompat.Widget.Button.Borderless.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

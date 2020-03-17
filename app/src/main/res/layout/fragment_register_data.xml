@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@android:color/white"
+    tools:context=".ui.register.RegisterDataFragment">
+
+    <TextView
+        android:id="@+id/sapaanRegisterTop"
+        style="@style/DefaultTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:text="Selamat datang"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sapaanRegisterSubtitle"
+        style="@style/DefaultTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="silakan isi data Anda"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sapaanRegisterTop" />
+
+    <TextView
+        style="@style/DefaultTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle"
+        android:text="1/2" />
+
+
+    <TextView
+        android:id="@+id/tvId"
+        style="@style/InputTextViewGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="NIK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        app:endIconMode="clear_text"
+        android:id="@+id/tfId"
+        app:counterMaxLength="16"
+        app:counterEnabled="true"
+        app:errorEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/tvId"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DefaultTextStyle"
+            android:inputType="number"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvNama"
+        style="@style/InputTextViewGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Nama"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tfId" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        app:endIconMode="clear_text"
+        android:id="@+id/tfNama"
+        app:counterMaxLength="35"
+        app:counterEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/tvNama"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DefaultTextStyle"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvTelp"
+        style="@style/InputTextViewGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Telp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tfNama" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        app:endIconMode="clear_text"
+        android:id="@+id/tfTelp"
+        app:counterEnabled="true"
+        app:counterMaxLength="13"
+        app:layout_constraintTop_toBottomOf="@id/tvTelp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DefaultTextStyle"
+            android:inputType="number"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/imgRegister"
+        android:layout_width="85dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:src="@drawable/ic_arrow_forward"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tfTelp" />
+
+    <TextView
+        android:id="@+id/tvKodeRegistrasi"
+        style="@style/TextClickable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punya_kode_registrasi"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgRegister" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LAPOR"
+            style="@style/DefaultTextStyle"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kan"
+            style="@style/DefaultTextStyle"
+            />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

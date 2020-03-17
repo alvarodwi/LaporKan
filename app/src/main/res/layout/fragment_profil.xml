@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profil.ProfilFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        style="@style/redToolbar"
+        android:elevation="10dp"
+        android:layout_height="?attr/actionBarSize">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="Profil Anda"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/bg_profil"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/bg_card_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/bg_profil"
+        tools:text="Administrator"
+        app:layout_constraintStart_toStartOf="@id/bg_profil"
+        android:layout_margin="30dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/tvNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tvRole"
+        tools:text="Budi Hartanto"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@id/bg_profil"
+        android:layout_marginStart="30dp"
+        android:textColor="@android:color/white"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/bg_profil"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/InputTextViewGray"
+            android:text="NIK"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:endIconMode="clear_text"
+            android:id="@+id/tfId"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DefaultTextStyle"
+                android:inputType="none"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/InputTextViewGray"
+            android:text="Username"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:endIconMode="clear_text"
+            android:id="@+id/tfUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DefaultTextStyle"
+                android:inputType="none"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/InputTextViewGray"
+            android:text="Nomor telepon"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:endIconMode="clear_text"
+            android:id="@+id/tfTelp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DefaultTextStyle"
+                android:inputType="none"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/btnContainer"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/btnBuatTanggapan"
+            style="@style/redButton"
+            android:elevation="5dp"
+            android:text="Buat Tanggapan"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
