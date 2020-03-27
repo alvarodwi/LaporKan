@@ -1,101 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:padding="20dp"
-    tools:context=".ui.register.kodeAdmin.KodeAdminFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/sapaanKodeTop"
-        style="@style/DefaultTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="40dp"
-        android:text="Selamat datang"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+    <variable
+        name="viewModel"
+        type="com.pedo.laporkan.ui.register.RegisterViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/sapaanKodeSubtitle"
-        style="@style/DefaultTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="silakan isi kode registrasi"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sapaanKodeTop" />
-
-    <TextView
-        android:id="@+id/tvKode"
-        style="@style/InputTextViewGray"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Kode Registrasi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sapaanKodeSubtitle" />
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="20dp"
+        tools:context=".ui.register.kodeAdmin.KodeAdminFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfKode"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:endIconMode="clear_text"
-        app:layout_constraintTop_toBottomOf="@id/tvKode">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
+            android:id="@+id/sapaanKodeTop"
             style="@style/DefaultTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="40dp"
+            android:text="Selamat datang"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sapaanKodeSubtitle"
+            style="@style/DefaultTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="silakan isi kode registrasi"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sapaanKodeTop" />
+
+        <TextView
+            android:id="@+id/tvKode"
+            style="@style/InputTextViewGray"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvKodeRegistrasi"
-        style="@style/TextGrayInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dengan menggunakan kode registrasi, Anda akan mendapatkan hak sebagai  Administrator aplikasi."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tfKode" />
-
-
-    <ImageButton
-        android:id="@+id/imgKode"
-        android:layout_width="85dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_arrow_forward"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tfKode" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LAPOR"
-            style="@style/DefaultTextStyle"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            />
+            android:layout_marginTop="50dp"
+            android:text="Kode Registrasi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sapaanKodeSubtitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfKode"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tvKode">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
+                android:layout_width="match_parent"
+                android:text="@={viewModel.kodeAdmin}"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/tvKodeRegistrasi"
+            style="@style/TextGrayInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kan"
-            style="@style/DefaultTextStyle"
-            />
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="Dengan menggunakan kode registrasi, Anda akan mendapatkan hak sebagai Admin aplikasi."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfKode" />
+
+
+        <ImageButton
+            android:id="@+id/imgKode"
+            android:layout_width="85dp"
+            android:layout_height="60dp"
+            android:onClick="@{() -> viewModel.onKodeAdminClicked()}"
+            android:layout_marginTop="50dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfKode" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

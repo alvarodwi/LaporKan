@@ -1,159 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@android:color/white"
-    tools:context=".ui.register.RegisterAkunFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/sapaanRegisterTop"
-        style="@style/DefaultTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="40dp"
-        android:text="Selamat datang"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+    <variable
+        name="viewModel"
+        type="com.pedo.laporkan.ui.register.RegisterViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/sapaanRegisterSubtitle"
-        style="@style/DefaultTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="silakan isi data Anda"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sapaanRegisterTop" />
-
-    <TextView
-        style="@style/DefaultTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle"
-        android:text="2/2" />
-
-
-    <TextView
-        android:id="@+id/tvUsername"
-        style="@style/InputTextViewGray"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        app:endIconMode="clear_text"
-        android:id="@+id/tfUsername"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:layout_constraintTop_toBottomOf="@id/tvUsername"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_height="40dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/DefaultTextStyle"
-            android:inputType="text"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvPassword"
-        style="@style/InputTextViewGray"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tfUsername" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        app:endIconMode="password_toggle"
-        android:id="@+id/tfPassword"
-        app:counterEnabled="true"
-        app:counterMaxLength="32"
-        app:layout_constraintTop_toBottomOf="@id/tvPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/DefaultTextStyle"
-            android:inputType="textPassword"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvPassword2"
-        style="@style/InputTextViewGray"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Konfirmasi Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tfPassword" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        app:endIconMode="password_toggle"
-        android:id="@+id/tfPassword2"
-        app:counterEnabled="true"
-        app:counterMaxLength="32"
-        app:errorEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/tvPassword2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/DefaultTextStyle"
-            android:inputType="textPassword"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageButton
-        android:id="@+id/imgRegister"
-        android:layout_width="85dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_arrow_forward"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tfPassword2" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LAPOR"
-            style="@style/DefaultTextStyle"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            />
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@android:color/white"
+        tools:context=".ui.register.RegisterAkunFragment">
 
         <TextView
+            android:id="@+id/sapaanRegisterTop"
+            style="@style/DefaultTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="40dp"
+            android:text="Selamat datang"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sapaanRegisterSubtitle"
+            style="@style/DefaultTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kan"
+            android:text="silakan isi data Anda"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterTop" />
+
+        <TextView
             style="@style/DefaultTextStyle"
-            />
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle"
+            android:text="2/2" />
+
+
+        <TextView
+            android:id="@+id/tvUsername"
+            style="@style/InputTextViewGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:endIconMode="clear_text"
+            android:id="@+id/tfUsername"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:layout_constraintTop_toBottomOf="@id/tvUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DefaultTextStyle"
+                android:text="@={viewModel.username}"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvPassword"
+            style="@style/InputTextViewGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfUsername" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:endIconMode="password_toggle"
+            android:id="@+id/tfPassword"
+            app:counterEnabled="true"
+            app:counterMaxLength="32"
+            app:layout_constraintTop_toBottomOf="@id/tvPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DefaultTextStyle"
+                android:text="@={viewModel.password}"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvPassword2"
+            style="@style/InputTextViewGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Konfirmasi Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfPassword" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:endIconMode="password_toggle"
+            android:id="@+id/tfPassword2"
+            app:counterEnabled="true"
+            app:counterMaxLength="32"
+            app:errorEnabled="true"
+            app:layout_constraintTop_toBottomOf="@id/tvPassword2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.confirmPassword}"
+                style="@style/DefaultTextStyle"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnRegister"
+            android:layout_width="85dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:onClick="@{() -> viewModel.onRegisterAkunClicked()}"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfPassword2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

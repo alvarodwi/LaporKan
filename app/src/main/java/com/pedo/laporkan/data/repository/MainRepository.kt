@@ -63,6 +63,10 @@ class MainRepository(context: Context) {
     fun getUserData(username: String, password: String) =
         database.userDao.getUserData(username, password)
 
+    fun getLatestUserData() = database.userDao.getLatestUserData()
+
+    fun checkUsername(username: String) = database.userDao.checkUsername(username)
+
     suspend fun createUser(data: User) {
         withContext(Dispatchers.IO) {
             database.userDao.createUser(data)
