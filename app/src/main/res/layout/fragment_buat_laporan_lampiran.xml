@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="viewModel"
+        type="com.pedo.laporkan.ui.laporan.buat.BuatLaporanViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:context=".ui.laporan.buat.BuatLaporanLampiranFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -87,23 +95,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblTitle" />
 
-<!--    <androidx.camera.view.PreviewView-->
-<!--        android:id="@+id/previewLampiran"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="275dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/lblSubtitle" />-->
+        <!--    <androidx.camera.view.PreviewView-->
+        <!--        android:id="@+id/previewLampiran"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="275dp"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/lblSubtitle" />-->
 
-    <Button
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="40dp"
-        android:backgroundTint="@drawable/circle"
-        android:drawableTop="@drawable/ic_camera_alt"
-        android:paddingTop="12dp"
-        app:layout_constraintBottom_toTopOf="@id/btnContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="40dp"
+            android:background="@drawable/circle"
+            android:drawableTop="@drawable/ic_camera_alt"
+            android:paddingTop="12dp"
+            app:layout_constraintBottom_toTopOf="@id/btnContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/btnContainer"
@@ -113,11 +121,14 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
+
             <Button
                 android:id="@+id/btnLanjutkan"
                 style="@style/redButton"
                 android:text="Lanjutkan"
+                android:onClick="@{() -> viewModel.onLampiranBtnClicked()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

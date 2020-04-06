@@ -2,6 +2,8 @@ package com.pedo.laporkan.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Helpers {
     data class DoubleTups<out A, out B>(
@@ -31,4 +33,7 @@ object Helpers {
 
         return resultName
     }
+
+    val indonesianLocale = Locale("id")
+    val laporKanDateFormat = SimpleDateFormat("EEEE, dd MMMM YYYY", indonesianLocale)
 }

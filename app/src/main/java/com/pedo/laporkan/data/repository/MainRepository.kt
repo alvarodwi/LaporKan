@@ -31,6 +31,8 @@ class MainRepository(context: Context) {
     //laporan
     fun getLaporan(id: String) = database.laporanDao.getLaporan(id)
 
+    fun getAllLaporan() = database.laporanDao.getAllLaporan()
+
     fun getLaporanByUser(userId: String) = database.laporanDao.getLaporanByUser(userId)
 
     fun getLaporanByStatus(status: StatusLaporan) = database.laporanDao.getLaporanByStatus(status)

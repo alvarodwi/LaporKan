@@ -10,5 +10,18 @@ object Constants {
         const val LOGGED_USER_NAME = "logged_user_name"
     }
 
+    object KriteriaDaftarLaporan{
+        const val SEMUA_LAPORAN = "semua_laporan"
+        const val LAPORAN_YANG_DIBUAT_MASYARAKAT = "laporan_yang_dibuat_masyarakat"
+        const val LAPORAN_YANG_DITANGGAPI_USER = "laporan_yang_ditanggapi"
+    }
+
+    object FilterDaftarLaporan{
+        const val LAPORAN_SELESAI = "Selesai"
+        const val LAPORAN_BARU = "Baru"
+        const val LAPORAN_PROSES = "Proses"
+        const val LAPORAN_GAGAL = "Gagal"
+    }
+
     const val KODE_ADMIN = "SMKB1S4!"
 }

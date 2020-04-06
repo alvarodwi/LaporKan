@@ -1,5 +1,6 @@
 package com.pedo.laporkan.ui.laporan.listing
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,18 +8,29 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.pedo.laporkan.R
+import com.pedo.laporkan.databinding.FragmentDaftarLaporanBinding
+import com.pedo.laporkan.utils.Constants
+import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_ROLE
 
 /**
  * A simple [Fragment] subclass.
  */
 class DaftarLaporanFragment : Fragment() {
+    private lateinit var binding : FragmentDaftarLaporanBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_daftar_laporan, container, false)
+        binding = FragmentDaftarLaporanBinding.inflate(inflater)
+
+        val userRole = context?.getSharedPreferences(Constants.SP_LAPORKAN, Context.MODE_PRIVATE)?.getString(LOGGED_USER_ROLE,null)
+        val adapter = DaftarLaporanVPAdapter(userRole!!,childFragmentManager)
+
+        binding.laporanViewPager.adapter = adapter
+        binding.laporanTabLayout.setupWithViewPager(binding.laporanViewPager)
+
+        return binding.root
     }
 
 }
