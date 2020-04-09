@@ -63,8 +63,8 @@
             android:id="@+id/detailLaporanToBuatTanggapan"
             app:destination="@id/buatTanggapanFragment" />
         <argument
-            android:name="itemLaporan"
-            app:argType="com.pedo.laporkan.data.model.Laporan" />
+            android:name="idLaporan"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/daftarReportFragment"
@@ -173,9 +173,13 @@
         android:id="@+id/buatTanggapanFragment"
         android:name="com.pedo.laporkan.ui.tanggapan.buat.BuatTanggapanFragment"
         android:label="fragment_buat_tanggapan"
-        tools:layout="@layout/fragment_buat_tanggapan" />
-    <fragment
-        android:id="@+id/daftarLaporanBaseFragment"
-        android:name="com.pedo.laporkan.ui.laporan.listing.template.DaftarLaporanBaseFragment"
-        android:label="DaftarLaporanBaseFragment" />
+        tools:layout="@layout/fragment_buat_tanggapan" >
+        <argument
+            android:name="idLaporan"
+            app:argType="string" />
+        <action
+            android:id="@+id/buatTanggapanToDetailLaporan"
+            app:destination="@id/detailLaporanFragment"
+            app:popUpTo="@id/detailLaporanFragment" />
+    </fragment>
 </navigation>

@@ -36,7 +36,7 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     init {
-        Log.d(DEFAULT_TAG, loggedUserId)
+        Log.d(DEFAULT_TAG, loggedUserId!!)
         Log.d(DEFAULT_TAG, userData.value.toString())
     }
 

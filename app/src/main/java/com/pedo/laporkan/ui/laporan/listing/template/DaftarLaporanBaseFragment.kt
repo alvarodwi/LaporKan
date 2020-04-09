@@ -53,7 +53,7 @@ abstract class DaftarLaporanBaseFragment(private val criteria: String) : Fragmen
         viewModel.toDetail.observe(viewLifecycleOwner, Observer {
             it?.let{
                 findNavController().navigate(
-                    DaftarLaporanFragmentDirections.daftarLaporanToDetailLaporan(it)
+                    DaftarLaporanFragmentDirections.daftarLaporanToDetailLaporan(it.id)
                 )
                 viewModel.doneToDetail()
             }

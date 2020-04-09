@@ -1,4 +1,4 @@
-package com.pedo.laporkan.ui.tanggapan.detail
+package com.pedo.laporkan.ui.splash
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,14 +11,14 @@ import com.pedo.laporkan.R
 /**
  * A simple [Fragment] subclass.
  */
-class DetailTanggapanFragment : Fragment() {
+class SplashFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_tanggapan, container, false)
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
 }

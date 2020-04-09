@@ -36,23 +36,24 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tvTanggal"
-                    style="@style/DefaultTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    printDate="@{item.tanggal}"
-                    tools:text="Senin, 24 Februari 2020" />
-
-                <TextView
                     android:id="@+id/tvJudul"
                     style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlueText"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:text="@{item.judul}"
                     tools:text="PDAM Kok Mati!!" />
+
+                <TextView
+                    android:id="@+id/tvTanggal"
+                    style="@style/TextGrayInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    printDate="@{item.tanggal}"
+                    tools:text="Senin, 24 Februari 2020" />
 
                 <TextView
                     android:id="@+id/tvPembuat"

@@ -91,7 +91,7 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
             _toastMessage.value = "User belum logout, mengarahkan ke beranda..."
             Handler().postDelayed({
                 _authenticationState.value = AuthenticationState.SUKSES
-            },3000) // 3 seconds
+            },2000) // 2 seconds
         }
     }
 

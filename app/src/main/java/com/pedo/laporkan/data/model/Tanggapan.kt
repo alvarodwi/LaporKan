@@ -24,7 +24,7 @@ import java.util.Date
     )
 )
 data class Tanggapan(
-    @PrimaryKey var id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "id_laporan") var idLaporan: String,
     var tanggal: Date,
     @ColumnInfo(name = "id_petugas") var idPetugas: String,

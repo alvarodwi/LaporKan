@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.pedo.laporkan.utils.Helpers.shortenName
 import kotlinx.android.parcel.Parcelize
 
 //class untuk user dalam aplikasi
@@ -24,6 +25,8 @@ data class User(
             UserLevel.PETUGAS -> "Petugas"
         }
     }
+
+    fun shortName() : String = shortenName(nama)
 }
 
 enum class UserLevel{

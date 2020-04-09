@@ -29,6 +29,8 @@ class MainRepository(context: Context) {
 
     //room related function
     //laporan
+    fun getDetailLaporan(id : String) = database.laporanDao.getDetailLaporan(id)
+
     fun getLaporan(id: String) = database.laporanDao.getLaporan(id)
 
     fun getAllLaporan() = database.laporanDao.getAllLaporan()
