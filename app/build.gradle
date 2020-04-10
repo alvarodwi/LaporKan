@@ -59,4 +59,8 @@ dependencies {
     implementation "androidx.camera:camera-camera2:$camerax_version"
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:1.0.0-alpha09"
+
+    //hehe mager
+    //UI Plugins!
+    implementation 'com.github.dewinjm:monthyear-picker:1.0.2'
 }

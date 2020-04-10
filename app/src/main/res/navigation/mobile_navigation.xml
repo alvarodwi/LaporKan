@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/daftarReportFragment"
-        android:name="com.pedo.laporkan.ui.report.DaftarReportFragment"
+        android:name="com.pedo.laporkan.ui.report.listing.DaftarReportFragment"
         android:label="fragment_daftar_report"
         tools:layout="@layout/fragment_daftar_report" >
         <action
@@ -77,9 +77,12 @@
     </fragment>
     <fragment
         android:id="@+id/previewReportFragment"
-        android:name="com.pedo.laporkan.ui.report.PreviewReportFragment"
+        android:name="com.pedo.laporkan.ui.report.preview.PreviewReportFragment"
         android:label="fragment_preview_report"
-        tools:layout="@layout/fragment_preview_report" />
+        tools:layout="@layout/fragment_preview_report" >
+        <argument android:name="dateLong"
+            app:argType="long"/>
+    </fragment>
     <fragment
         android:id="@+id/registerDataFragment"
         android:name="com.pedo.laporkan.ui.register.RegisterDataFragment"
