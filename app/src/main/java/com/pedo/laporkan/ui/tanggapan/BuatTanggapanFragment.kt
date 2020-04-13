@@ -1,4 +1,4 @@
-package com.pedo.laporkan.ui.tanggapan.buat
+package com.pedo.laporkan.ui.tanggapan
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,11 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
-import com.pedo.laporkan.R
-import com.pedo.laporkan.databinding.FragmentBuatLaporanTulisanBinding
 import com.pedo.laporkan.databinding.FragmentBuatTanggapanBinding
-import com.pedo.laporkan.ui.laporan.buat.BuatLaporanViewModel
-
 /**
  * A simple [Fragment] subclass.
  */
@@ -29,10 +25,16 @@ class BuatTanggapanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBuatTanggapanBinding.inflate(inflater)
-        bundle = BuatTanggapanFragmentArgs.fromBundle(arguments!!)
+        bundle =
+            BuatTanggapanFragmentArgs.fromBundle(
+                arguments!!
+            )
         viewModel = ViewModelProvider(
             this,
-            BuatTanggapanViewModel.Factory(bundle.idLaporan,requireActivity().application)
+            BuatTanggapanViewModel.Factory(
+                bundle.idLaporan,
+                requireActivity().application
+            )
         ).get(BuatTanggapanViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -60,7 +62,9 @@ class BuatTanggapanFragment : Fragment() {
             it?.let {
                 if (it) {
                     findNavController().navigate(
-                        BuatTanggapanFragmentDirections.buatTanggapanToDetailLaporan(bundle.idLaporan)
+                        BuatTanggapanFragmentDirections.buatTanggapanToDetailLaporan(
+                            bundle.idLaporan
+                        )
                     )
                     viewModel.doneNextAction()
                 }

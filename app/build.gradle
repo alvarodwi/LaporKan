@@ -6,6 +6,7 @@ apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileOptions {
+        // Sets Java compatibility to Java 8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -63,4 +64,8 @@ dependencies {
     //hehe mager
     //UI Plugins!
     implementation 'com.github.dewinjm:monthyear-picker:1.0.2'
+    //Java Time Backported, bisa ilang kalo pake Anstud Canary
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.3'
+    //stetho
+    implementation 'com.facebook.stetho:stetho:1.5.1'
 }

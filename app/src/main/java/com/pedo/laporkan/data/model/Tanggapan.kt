@@ -1,6 +1,7 @@
 package com.pedo.laporkan.data.model
 
 import androidx.room.*
+import org.threeten.bp.LocalDate
 import java.util.Date
 
 @Entity(
@@ -26,7 +27,7 @@ import java.util.Date
 data class Tanggapan(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "id_laporan") var idLaporan: String,
-    var tanggal: Date,
+    var tanggal: LocalDate,
     @ColumnInfo(name = "id_petugas") var idPetugas: String,
     var tanggapan: String
 )

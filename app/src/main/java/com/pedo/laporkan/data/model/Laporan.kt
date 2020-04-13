@@ -7,6 +7,7 @@ import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_GAGAL
 import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_PROSES
 import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_SELESAI
 import kotlinx.android.parcel.Parcelize
+import org.threeten.bp.LocalDate
 import java.util.Date
 
 @Entity(
@@ -27,7 +28,7 @@ import java.util.Date
 @Parcelize
 data class Laporan(
     @PrimaryKey var id: String,
-    var tanggal: Date,
+    var tanggal: LocalDate,
     @ColumnInfo(name = "id_user") var idUser: String,
     var judul: String,
     var isi: String,

@@ -9,6 +9,7 @@ import com.pedo.laporkan.data.model.User
 import com.pedo.laporkan.utils.Constants.SP_LAPORKAN
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class MainRepository(context: Context) {
     companion object {
@@ -38,6 +39,8 @@ class MainRepository(context: Context) {
     fun getLaporanByUser(userId: String) = database.laporanDao.getLaporanByUser(userId)
 
     fun getLaporanByStatus(status: StatusLaporan) = database.laporanDao.getLaporanByStatus(status)
+
+//    fun getLaporanBetweenDate(upperLimit : String,lowerLimit: String) = database.laporanDao.getLaporanBetweenDates(upperLimit,lowerLimit)
 
     suspend fun insertLaporan(data: Laporan) {
         withContext(Dispatchers.IO) {

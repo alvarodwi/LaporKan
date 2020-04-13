@@ -2,6 +2,7 @@ package com.pedo.laporkan.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import org.threeten.bp.format.DateTimeFormatter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,5 +36,5 @@ object Helpers {
     }
 
     val indonesianLocale = Locale("id")
-    val laporKanDateFormat = SimpleDateFormat("EEEE, dd MMMM YYYY", indonesianLocale)
+    val laporKanDateFormat = DateTimeFormatter.ofPattern("EEEE, dd MMMM YYYY", indonesianLocale)
 }

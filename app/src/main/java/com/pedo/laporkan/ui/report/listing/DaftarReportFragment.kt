@@ -50,7 +50,7 @@ class DaftarReportFragment : Fragment() {
         viewModel.showMonthSelector.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
-                    createDatePickerDialog()?.let {
+                    createDatePickerDialog().let {
                         it.show(childFragmentManager, null)
                         it.setOnDateSetListener(MonthYearPickerDialog.OnDateSetListener { year, monthOfYear ->
                             val cal = Calendar.getInstance()

@@ -86,13 +86,6 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         _greeting.value = getTimeOnAndroid()
-
-        if (!checkIfUserHasntLogin()){
-            _toastMessage.value = "User belum logout, mengarahkan ke beranda..."
-            Handler().postDelayed({
-                _authenticationState.value = AuthenticationState.SUKSES
-            },2000) // 2 seconds
-        }
     }
 
     private fun getTimeOnAndroid(): String {
@@ -132,11 +125,6 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
 
     fun doneRegisterAction() {
         _toRegisterAction.value = null
-    }
-
-    //return true if user hasn't logged in or had logged out
-    private fun checkIfUserHasntLogin() : Boolean{
-        return repository.mainSharedPreferences.getString(LOGGED_USER_ID,null) == null
     }
 
     private suspend fun getUserFromDB(username:String) : User?{

@@ -8,6 +8,8 @@ object Constants {
         const val LOGGED_USER_ID = "logged_user_id"
         const val LOGGED_USER_ROLE = "logged_user_role"
         const val LOGGED_USER_NAME = "logged_user_name"
+
+        const val IS_FIRST_OPEN = "first_time_app_open"
     }
 
     object KriteriaDaftarLaporan{

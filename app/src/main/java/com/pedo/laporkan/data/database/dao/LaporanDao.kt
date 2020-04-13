@@ -1,5 +1,6 @@
 package com.pedo.laporkan.data.database.dao
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.pedo.laporkan.data.model.Laporan
@@ -7,6 +8,8 @@ import com.pedo.laporkan.data.model.StatusLaporan
 import com.pedo.laporkan.data.model.relational.LaporanAndUser
 import com.pedo.laporkan.data.model.relational.LaporanAndUserWithTanggapan
 import com.pedo.laporkan.data.model.relational.LaporanWithTanggapan
+import com.pedo.laporkan.data.model.relational.ReportResponse
+import java.util.*
 
 @Dao
 interface LaporanDao {
@@ -29,6 +32,14 @@ interface LaporanDao {
     @Transaction
     @Query("SELECT * from laporan where id = :id")
     fun getDetailLaporan(id: String) : LiveData<LaporanAndUserWithTanggapan>
+
+//    @Transaction
+//    @Query("SELECT * from laporan "+
+//            "inner join tanggapan ON tanggapan.id_laporan = laporan.id" +
+//            "inner join user ON user.id = laporan.id_user" +
+//            "where laporan.tanggal between Date(:upperLimit) and Date(:lowerLimit)"
+//    )
+//    fun getLaporanBetweenDates(upperLimit : String, lowerLimit : String) : Cursor
 
     @Insert
     fun insertLaporan(data : Laporan)

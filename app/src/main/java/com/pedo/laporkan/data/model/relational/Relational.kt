@@ -36,3 +36,9 @@ data class LaporanAndUserWithTanggapan(
     @Relation(parentColumn = "id",entityColumn = "id_laporan",entity = Tanggapan::class)
     val listTanggapanAndUser : List<TanggapanAndUser>
 )
+
+data class ReportResponse(
+    val laporanCount : Int,
+    val masyarakatCount : Int,
+    val petugasCount : Int
+)

@@ -40,6 +40,7 @@ class DetailLaporanViewModel(idLaporan: String, app: Application) : AndroidViewM
     }
 
     init {
+        showMenuDetail.value = false
         val userRole = repository.mainSharedPreferences.getString(LOGGED_USER_ROLE, null)
         userRole?.let {
             when (it) {

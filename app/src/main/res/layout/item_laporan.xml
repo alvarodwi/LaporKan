@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:elevation="10dp"
+        android:elevation="20dp"
         app:cardCornerRadius="10dp"
         android:onClick="@{() -> onClickListener.onClick(item)}"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    printDate="@{item.tanggal}"
+                    app:printDate="@{item.tanggal}"
                     tools:text="Senin, 24 Februari 2020" />
 
                 <TextView

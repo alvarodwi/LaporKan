@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pedo.laporkan.data.model.Laporan
 import com.pedo.laporkan.ui.laporan.listing.DaftarLaporanRVAdapter
 import com.pedo.laporkan.utils.Helpers.laporKanDateFormat
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 @BindingAdapter("underLineText")
@@ -54,8 +56,9 @@ fun ImageView.loadImageFromString(url : String?){
 }
 
 @BindingAdapter("printDate")
-fun TextView.printDate(date : Date?){
+fun TextView.printDate(date : LocalDate?){
     date?.let {
-        text = laporKanDateFormat.format(it)
+        it.format(laporKanDateFormat)
+        text = it.toString()
     }
 }

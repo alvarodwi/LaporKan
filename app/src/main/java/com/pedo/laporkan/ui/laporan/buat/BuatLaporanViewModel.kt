@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import org.threeten.bp.LocalDate
 import java.util.*
 
 class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
@@ -55,7 +56,7 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         val currentId = UUID.randomUUID().toString().replace("-","")
-        val currentTanggal = Date()
+        val currentTanggal = LocalDate.now()
         val currentUserId =
             repository.mainSharedPreferences.getString(LOGGED_USER_ID, null)
         val currentStatus = StatusLaporan.BARU
@@ -104,7 +105,7 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
         val laporan = getIncompleteLaporan()
         laporan.let{
             //update tanggal to current time when this function called
-            it.tanggal = Date()
+            it.tanggal = LocalDate.now()
         }
         repository.insertLaporan(laporan)
     }

@@ -6,13 +6,13 @@
     <data>
     <variable
         name="viewModel"
-        type="com.pedo.laporkan.ui.tanggapan.buat.BuatTanggapanViewModel" />
+        type="com.pedo.laporkan.ui.tanggapan.BuatTanggapanViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tanggapan.buat.BuatTanggapanFragment">
+        tools:context=".ui.tanggapan.BuatTanggapanFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/appToolbar"
@@ -129,7 +129,6 @@
             style="@style/DefaultTextStyle" />
 
         <LinearLayout
-            android:visibility="gone"
             android:onClick="@{() -> viewModel.onKirimTanggapanBtnClicked()}"
             android:id="@+id/btnContainer"
             android:layout_width="match_parent"

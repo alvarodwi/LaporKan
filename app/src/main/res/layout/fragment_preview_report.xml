@@ -81,14 +81,14 @@
                         style="@style/DefaultTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textColor="@color/colorPrimaryDark"
                         android:textStyle="bold"
                         tools:text="Januari 2020" />
 
                     <TextView
                         android:id="@+id/tvPembuat"
-                        style="@style/DefaultTextStyle"
+                        style="@style/TextGrayInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
@@ -96,7 +96,7 @@
 
                     <TextView
                         android:id="@+id/tvTanggalDibuat"
-                        style="@style/DefaultTextStyle"
+                        style="@style/TextGrayInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"

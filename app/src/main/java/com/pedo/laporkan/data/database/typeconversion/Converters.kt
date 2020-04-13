@@ -3,18 +3,18 @@ package com.pedo.laporkan.data.database.typeconversion
 import androidx.room.TypeConverter
 import com.pedo.laporkan.data.model.StatusLaporan
 import com.pedo.laporkan.data.model.UserLevel
-import java.util.Date
+import org.threeten.bp.LocalDate
 
 class Converters {
     companion object{
         //date conversion
         @TypeConverter
         @JvmStatic
-        fun fromDate(value: Date?) : Long? = value?.time
+        fun fromLocalDate(value: LocalDate?) : String? = value?.toString()
 
         @TypeConverter
         @JvmStatic
-        fun toDate(value: Long?) : Date? = value?.let { Date(it) }
+        fun toLocalDate(value: String?) : LocalDate? = LocalDate.parse(value)
 
         //statusLaporan conversion
         @TypeConverter

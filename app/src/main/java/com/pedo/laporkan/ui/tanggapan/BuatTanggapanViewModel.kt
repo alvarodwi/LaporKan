@@ -1,15 +1,14 @@
-package com.pedo.laporkan.ui.tanggapan.buat
+package com.pedo.laporkan.ui.tanggapan
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.pedo.laporkan.data.model.Laporan
 import com.pedo.laporkan.data.model.Tanggapan
 import com.pedo.laporkan.data.repository.MainRepository
 import com.pedo.laporkan.utils.Constants
 import com.pedo.laporkan.utils.Helpers.shortenName
 import kotlinx.coroutines.*
+import org.threeten.bp.LocalDate
 import java.util.*
-import kotlin.math.tan
 
 class BuatTanggapanViewModel(private val idLaporan: String,app : Application) : AndroidViewModel(app) {
     private val repository = MainRepository.getInstance(app.applicationContext)
@@ -40,7 +39,7 @@ class BuatTanggapanViewModel(private val idLaporan: String,app : Application) : 
             return
         }
 
-        val currentTanggal = Date()
+        val currentTanggal = LocalDate.now()
         val currentPetugasId =
             repository.mainSharedPreferences.getString(Constants.SharedPrefKey.LOGGED_USER_ID, null)
 
