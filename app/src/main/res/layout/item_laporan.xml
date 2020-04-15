@@ -6,7 +6,7 @@
     <data>
     <variable
         name="item"
-        type="com.pedo.laporkan.data.model.Laporan" />
+        type="com.pedo.laporkan.data.model.relational.LaporanAndUser" />
         <variable
             name="onClickListener"
             type="com.pedo.laporkan.ui.laporan.listing.DaftarLaporanRVAdapter.OnClickListener" />
@@ -16,9 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:elevation="20dp"
+        android:elevation="10dp"
         app:cardCornerRadius="10dp"
-        android:onClick="@{() -> onClickListener.onClick(item)}"
+        android:onClick="@{() -> onClickListener.onClick(item.laporan)}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -43,7 +43,7 @@
                     android:textColor="@color/colorBlueText"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="@{item.judul}"
+                    android:text="@{item.laporan.judul}"
                     tools:text="PDAM Kok Mati!!" />
 
                 <TextView
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    app:printDate="@{item.tanggal}"
+                    app:printDate="@{item.laporan.tanggal}"
                     tools:text="Senin, 24 Februari 2020" />
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:text="@{item.idUser}"
+                    android:text="@{item.user.printNameOnItem()}"
                     tools:text="Dibuat oleh Anda" />
             </LinearLayout>
 
@@ -70,7 +70,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:src="@color/colorBlueText"
-                loadImageFromString="@{item.foto}"
+                app:loadImage="@{item.laporan.foto}"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/itemTextContainer" />
 
@@ -92,7 +93,7 @@
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@{item.convertStatus()}"
+                    android:text="@{item.laporan.printStatus()}"
                     tools:text="Status" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

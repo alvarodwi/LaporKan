@@ -16,8 +16,9 @@ interface LaporanDao {
     @Query("SELECT * from laporan ORDER BY tanggal")
     fun getAllLaporan() : LiveData<List<Laporan>>
 
+    @Transaction
     @Query("SELECT * from laporan where status = :status ORDER BY tanggal")
-    fun getLaporanByStatus(status : StatusLaporan) : LiveData<List<Laporan>>
+    fun getLaporanByStatus(status : StatusLaporan) : LiveData<List<LaporanAndUser>>
 
     @Query("SELECT * from laporan where id_user = :idUser ORDER BY tanggal")
     fun getLaporanByUser(idUser : String) : LiveData<List<Laporan>>

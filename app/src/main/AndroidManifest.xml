@@ -20,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.pedo.laporkan.ui.intro.LaporKanIntro"
+            android:label="Intro LaporKan" />
     </application>
 
 </manifest>

@@ -24,8 +24,7 @@ class DaftarLaporanFragment : Fragment() {
     ): View? {
         binding = FragmentDaftarLaporanBinding.inflate(inflater)
 
-        val userRole = context?.getSharedPreferences(Constants.SP_LAPORKAN, Context.MODE_PRIVATE)?.getString(LOGGED_USER_ROLE,null)
-        val adapter = DaftarLaporanVPAdapter(userRole!!,childFragmentManager)
+        val adapter = DaftarLaporanVPAdapter(childFragmentManager)
 
         binding.laporanViewPager.adapter = adapter
         binding.laporanTabLayout.setupWithViewPager(binding.laporanViewPager)

@@ -29,16 +29,20 @@ class BottomSheetMenuLaporanViewModel(private val itemLaporan: Laporan,app : App
 
     init {
         val statusLaporan = itemLaporan.convertStatus()
-        hideBuatTanggapan.value = false
+        hideBuatTanggapan.value = true
         showTutupLaporan.value = false
         hideUbahStatus.value = false
 
         when(statusLaporan){
-            LAPORAN_BARU -> subLabelUbahStatus.value = "Mengubah status laporan menjadi PROSES"
-            LAPORAN_PROSES -> subLabelUbahStatus.value = "Mengubah status laporan menjadi SELESAI"
+            LAPORAN_BARU -> {
+                subLabelUbahStatus.value = "Mengubah status laporan menjadi PROSES"
+            }
+            LAPORAN_PROSES -> {
+                subLabelUbahStatus.value = "Mengubah status laporan menjadi SELESAI"
+                hideBuatTanggapan.value = false
+            }
             else -> {
                 hideUbahStatus.value = true
-                hideBuatTanggapan.value = true
             }
         }
 

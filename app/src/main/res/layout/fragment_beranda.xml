@@ -240,6 +240,19 @@
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Laporan terkini"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            style="@style/DefaultTextStyle"
+
+            app:layout_constraintTop_toBottomOf="@id/containerMid"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/berandaBottomCard"
             android:layout_width="match_parent"
@@ -259,93 +272,34 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/labelStatistik"
+                    android:id="@+id/tvJudulLaporanTerkini"
                     style="@style/DefaultTextStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Statistik"
+                    android:textColor="@color/colorBlueText"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="PDAM Kok Mati!!" />
 
-                <TextView
-                    android:id="@+id/subLabelStatistik"
-                    style="@style/DefaultTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sejauh ini, kamu telah membuat"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelStatistik" />
-
-                <LinearLayout
-                    android:id="@+id/containerCounter"
+                <ImageView
+                    android:id="@+id/fotoLaporanTerkini"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/subLabelStatistik">
+                    android:layout_height="0dp"
+                    tools:src="@drawable/ic_clear"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tvJudulLaporanTerkini"
+                    />
 
-                    <TextView
-                        android:id="@+id/counterStatistikLeft"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="5"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:text="5" />
-
-                    <TextView
-                        android:id="@+id/counterStatistikRight"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="5"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:berandaItemVisibilityMasyarakat="@{viewModel.berandaRole}"
-                        tools:text="5" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/containerLabel"
+                <ImageView
+                    android:id="@+id/imgEmptyTerkini"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/containerCounter">
-
-                    <TextView
-                        android:id="@+id/tvStatistikLeft"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tanggapan"
-                        android:textAlignment="center"
-                        android:textSize="13sp"
-                        tools:text="Tanggapan" />
-
-                    <TextView
-                        android:id="@+id/tvStatistikRight"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tanggapan"
-                        android:textAlignment="center"
-                        android:textSize="13sp"
-                        app:berandaItemVisibilityMasyarakat="@{viewModel.berandaRole}"
-                        tools:text="Tanggapan" />
-                </LinearLayout>
-
+                    android:layout_height="match_parent"
+                    android:elevation="5dp"
+                    android:src="@drawable/ic_no_data"
+                    android:background="@android:color/white"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

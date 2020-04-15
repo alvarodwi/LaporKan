@@ -1,6 +1,8 @@
 package com.pedo.laporkan.ui.laporan.buat
 
 import android.app.Application
+import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -76,19 +78,64 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     //fragmentLampiran aka Foto
-    private var _isPhotoAttached = MutableLiveData<Boolean>()
-    val isPhotoAttached : LiveData<Boolean>
+    private var _isPhotoAttached = MutableLiveData<Bitmap>()
+    val isPhotoAttached : LiveData<Bitmap>
         get() = _isPhotoAttached
 
+    private var _photoAction = MutableLiveData<Int>()
+    val photoAction :LiveData<Int>
+        get() = _photoAction
+
+    fun onBtnCameraClicked(){
+        _photoAction.value = 1
+    }
+
+    fun onBtnGalleryClicked(){
+        _photoAction.value = 2
+    }
+
+    fun assignPhotoToLaporan(photo : Bitmap){
+        _isPhotoAttached.value = resizeBitmapToSmallerSize(photo,480,640)
+//        _isPhotoAttached.value = photo
+    }
+
+    fun removePhotoFromLaporan(){
+        _isPhotoAttached.value = null
+    }
+
+    fun resetPhotoAction(){
+        _photoAction.value = null
+    }
+
     fun onLampiranBtnClicked(){
-       isPhotoAttached.value?.let {
-           if(it){
+       isPhotoAttached.value.let {photo ->
+           if(photo!=null){
                //assign photo to laporan
+               incompleteLaporan.let {
+                   it.foto = photo
+               }
+               Log.d(DEFAULT_TAG,getIncompleteLaporan().toString())
+               _nextAction.value = 2
            }else{
                Log.d(DEFAULT_TAG,getIncompleteLaporan().toString())
                _nextAction.value = 2
            }
        }
+    }
+
+    private fun resizeBitmapToSmallerSize(bitmap: Bitmap,newWidth : Int,newHeight : Int) : Bitmap{
+        val width = bitmap.width
+        val height = bitmap.height
+
+        val scaleWidth = newWidth.toFloat() / width
+        val scaleHeigth = newHeight.toFloat() / height
+
+        val matrix = Matrix()
+        matrix.postScale(scaleWidth,scaleHeigth)
+
+        return Bitmap.createBitmap(
+            bitmap,0,0,width,height,matrix,false
+        )
     }
 
     //tinjau
@@ -116,9 +163,6 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
         _isInputFilled.addSource(Helpers.DoubleTuple(judul, isi)){
             _isInputFilled.value = !((it.first == null || it.first.isBlank()) || (it.second == null || it.second.isBlank()))
         }
-
-        //lampiran
-        _isPhotoAttached.value = false
     }
 
     fun doneNextAction(){

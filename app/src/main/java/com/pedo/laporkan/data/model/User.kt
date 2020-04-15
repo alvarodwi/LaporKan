@@ -27,6 +27,7 @@ data class User(
     }
 
     fun shortName() : String = shortenName(nama)
+    fun printNameOnItem() : String = "Dibuat oleh ${shortName()}"
 }
 
 enum class UserLevel{

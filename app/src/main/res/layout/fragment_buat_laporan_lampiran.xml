@@ -94,24 +94,58 @@
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblTitle" />
+            
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblSubtitle">
+            <ImageView
+                android:id="@+id/previewLampiran"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                />
+            <ImageView
+                android:id="@+id/btnRemoveImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_clear"
+                android:layout_gravity="top|end"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:onClick="@{() -> viewModel.removePhotoFromLaporan()}"
+                />
+        </FrameLayout>
 
-        <!--    <androidx.camera.view.PreviewView-->
-        <!--        android:id="@+id/previewLampiran"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="275dp"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@id/lblSubtitle" />-->
-
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="40dp"
-            android:background="@drawable/circle"
-            android:drawableTop="@drawable/ic_camera_alt"
-            android:paddingTop="12dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@id/btnContainer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            >
+            <ImageButton
+                android:onClick="@{() -> viewModel.onBtnCameraClicked()}"
+                android:id="@+id/capture_button"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="24dp"
+                app:srcCompat="@android:drawable/ic_menu_camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <ImageButton
+                android:onClick="@{() -> viewModel.onBtnGalleryClicked()}"
+                android:id="@+id/gallery_button"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="24dp"
+                app:srcCompat="@android:drawable/ic_menu_gallery"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnContainer"

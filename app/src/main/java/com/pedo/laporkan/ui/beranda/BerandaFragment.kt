@@ -56,18 +56,9 @@ class BerandaFragment : Fragment() {
                 if(it == "Masyarakat"){
                     binding.imgMidLeftCard.setImageResource(R.drawable.ic_add)
                     binding.tvMidLeftCard.text = "Buat Laporan"
-
-                    binding.tvStatistikLeft.text = "Laporan"
-                    binding.tvStatistikRight.text = "Ditanggapi"
                 }else {
                     binding.imgMidLeftCard.setImageResource(R.drawable.ic_insert_drive_file)
                     binding.tvMidLeftCard.text = "Buat Report"
-                    if(it == "Petugas"){
-                        binding.tvStatistikLeft.text = "Tanggapan"
-                    }else{
-                        binding.tvStatistikLeft.text = "Report"
-                        binding.tvStatistikRight.text = "Ditanggapi"
-                    }
                 }
             }
         })

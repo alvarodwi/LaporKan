@@ -61,6 +61,9 @@ abstract class DaftarLaporanBaseFragment(private val criteria: String) : Fragmen
 
         viewModel.listLaporan.observe(viewLifecycleOwner, Observer {
             it?.let{
+                if(!it.isNotEmpty()){
+                    binding.emptyState.visibility = View.VISIBLE
+                }
                 Log.d(DEFAULT_TAG,it.toString())
                 (binding.rvLaporanListing.adapter as DaftarLaporanRVAdapter).submitList(it)
             }

@@ -1,5 +1,6 @@
 package com.pedo.laporkan.data.model
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import androidx.room.*
 import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_BARU
@@ -32,7 +33,7 @@ data class Laporan(
     @ColumnInfo(name = "id_user") var idUser: String,
     var judul: String,
     var isi: String,
-    var foto: String? = null,
+    var foto: Bitmap? = null,
     var status: StatusLaporan = StatusLaporan.BARU
 ) : Parcelable {
     fun convertStatus(): String {
@@ -41,6 +42,24 @@ data class Laporan(
             StatusLaporan.PROSES -> LAPORAN_PROSES
             StatusLaporan.GAGAL -> LAPORAN_GAGAL
             StatusLaporan.SELESAI -> LAPORAN_SELESAI
+        }
+    }
+
+    fun printStatus(): String{
+        return when (status) {
+            StatusLaporan.BARU -> "Belum divalidasi"
+            StatusLaporan.PROSES -> "Diproses"
+            StatusLaporan.GAGAL -> "Gagal validasi"
+            StatusLaporan.SELESAI -> "Selesai"
+        }
+    }
+
+    fun printStatusWithDetail() : String{
+        return when (status) {
+            StatusLaporan.BARU -> "Belum divalidasi petugas"
+            StatusLaporan.PROSES -> "Masih dalam proses"
+            StatusLaporan.GAGAL -> "Gagal di tahap validasi"
+            StatusLaporan.SELESAI -> "Sudah selesai"
         }
     }
 }

@@ -16,6 +16,10 @@ object Constants {
         const val SEMUA_LAPORAN = "semua_laporan"
         const val LAPORAN_YANG_DIBUAT_MASYARAKAT = "laporan_yang_dibuat_masyarakat"
         const val LAPORAN_YANG_DITANGGAPI_USER = "laporan_yang_ditanggapi"
+
+        const val LAPORAN_BARU = "laporan_baru"
+        const val LAPORAN_DIPROSES = "laporan_proses"
+        const val LAPORAN_SELESAI = "laporan_selesai"
     }
 
     object FilterDaftarLaporan{
@@ -26,4 +30,8 @@ object Constants {
     }
 
     const val KODE_ADMIN = "SMKB1S4!"
+
+    const val REQUEST_CODE_CAMERA = 10
+    const val REQUEST_CODE_GALLERY = 11
+    const val IMAGE_TYPE = "image/*"
 }

@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pedo.laporkan.data.model.Laporan
+import com.pedo.laporkan.data.model.relational.LaporanAndUser
 import com.pedo.laporkan.databinding.ItemLaporanBinding
 
-class DaftarLaporanRVAdapter(private val onClickListener: OnClickListener) : ListAdapter<Laporan,DaftarLaporanRVAdapter.LaporanVH>(DiffCallback) {
+class DaftarLaporanRVAdapter(private val onClickListener: OnClickListener) : ListAdapter<LaporanAndUser,DaftarLaporanRVAdapter.LaporanVH>(DiffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,18 +22,18 @@ class DaftarLaporanRVAdapter(private val onClickListener: OnClickListener) : Lis
         holder.bind(getItem(position),onClickListener)
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<Laporan>(){
-        override fun areItemsTheSame(oldItem: Laporan, newItem: Laporan): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<LaporanAndUser>(){
+        override fun areItemsTheSame(oldItem: LaporanAndUser, newItem: LaporanAndUser): Boolean {
             return  oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Laporan, newItem: Laporan): Boolean {
-            return oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: LaporanAndUser, newItem: LaporanAndUser): Boolean {
+            return oldItem.laporan.id == newItem.laporan.id
         }
     }
 
     class LaporanVH(val binding : ItemLaporanBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item : Laporan,itemClick : OnClickListener){
+        fun bind(item : LaporanAndUser,itemClick : OnClickListener){
             binding.item = item
             binding.onClickListener = itemClick
             binding.executePendingBindings()

@@ -1,11 +1,11 @@
 package com.pedo.laporkan.utils
 
+import android.graphics.Bitmap
 import android.graphics.Paint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.pedo.laporkan.data.model.Laporan
 import com.pedo.laporkan.ui.laporan.listing.DaftarLaporanRVAdapter
 import com.pedo.laporkan.utils.Helpers.laporKanDateFormat
@@ -45,20 +45,19 @@ fun View.berandaItemVisibilityPetugas(userRole: String) {
     }
 }
 
-@BindingAdapter("loadImageFromString")
-fun ImageView.loadImageFromString(url : String?){
-    if(url==null){
+@BindingAdapter("loadImage")
+fun ImageView.loadImage(bitmap : Bitmap?) {
+    if(bitmap == null){
         this.visibility = View.GONE
     }else{
         this.visibility = View.VISIBLE
-        //load image using glide here!
+        this.setImageBitmap(bitmap)
     }
 }
 
 @BindingAdapter("printDate")
 fun TextView.printDate(date : LocalDate?){
     date?.let {
-        it.format(laporKanDateFormat)
-        text = it.toString()
+        text = it.format(laporKanDateFormat).toString()
     }
 }

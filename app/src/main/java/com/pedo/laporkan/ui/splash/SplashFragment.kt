@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.pedo.laporkan.MainActivity
 
 import com.pedo.laporkan.R
+import com.pedo.laporkan.ui.intro.LaporKanIntro
 
 /**
  * A simple [Fragment] subclass.
@@ -42,6 +43,7 @@ class SplashFragment : Fragment() {
                 when(it){
                     1 -> {
                         //arahkan ke intro
+                        loadIntro()
                     }
                     2 -> {
                         //arahkan ke login
@@ -74,5 +76,13 @@ class SplashFragment : Fragment() {
                 viewModel.resetNextAction()
             }
         })
+    }
+
+    private fun loadIntro(){
+        Intent(requireActivity(),LaporKanIntro::class.java).also { intentIntro ->
+            intentIntro.resolveActivity(requireContext().packageManager)?.also {
+                startActivity(intentIntro)
+            }
+        }
     }
 }

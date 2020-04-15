@@ -1,9 +1,13 @@
 package com.pedo.laporkan.data.database.typeconversion
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
 import androidx.room.TypeConverter
 import com.pedo.laporkan.data.model.StatusLaporan
 import com.pedo.laporkan.data.model.UserLevel
 import org.threeten.bp.LocalDate
+import java.io.ByteArrayOutputStream
 
 class Converters {
     companion object{
@@ -16,14 +20,37 @@ class Converters {
         @JvmStatic
         fun toLocalDate(value: String?) : LocalDate? = LocalDate.parse(value)
 
+        //bitmap conversion
+        //date conversion
+        @TypeConverter
+        @JvmStatic
+        fun fromBitmap(value: Bitmap?) : String?{
+            val stream = ByteArrayOutputStream()
+            value?.compress(Bitmap.CompressFormat.PNG,100,stream)
+            val outputStream = stream.toByteArray()
+            //memory wise =)
+            value?.recycle()
+            stream.close()
+
+            val output = Base64.encodeToString(outputStream,Base64.DEFAULT)
+            return output
+        }
+
+        @TypeConverter
+        @JvmStatic
+        fun toBitmap(value: String?) : Bitmap? {
+            val decodedString = Base64.decode(value,Base64.DEFAULT)
+            return BitmapFactory.decodeByteArray(decodedString,0,decodedString.size)
+        }
+
         //statusLaporan conversion
         @TypeConverter
         @JvmStatic
         fun fromStatusLaporan(value : StatusLaporan): Int{
             return when(value){
                 StatusLaporan.BARU -> 0
-                StatusLaporan.PROSES -> 1
-                StatusLaporan.GAGAL -> 2
+                StatusLaporan.GAGAL -> 1
+                StatusLaporan.PROSES -> 2
                 StatusLaporan.SELESAI -> 3
             }
         }
@@ -33,8 +60,8 @@ class Converters {
         fun toStatusLaporan(value: Int) : StatusLaporan {
             return when(value){
                 0 -> StatusLaporan.BARU
-                1 -> StatusLaporan.PROSES
-                2 -> StatusLaporan.GAGAL
+                1 -> StatusLaporan.GAGAL
+                2 -> StatusLaporan.PROSES
                 3 -> StatusLaporan.SELESAI
                 else -> StatusLaporan.BARU
             }
