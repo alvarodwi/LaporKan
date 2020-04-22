@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.pedo.laporkan.ui.laporan.listing.template.DaftarLaporanViewModel" />
@@ -17,14 +18,14 @@
 
 
         <androidx.cardview.widget.CardView
-            android:layout_margin="20dp"
-            app:cardCornerRadius="10dp"
-            android:elevation="10dp"
             android:id="@+id/overviewCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_margin="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -33,79 +34,80 @@
                 android:padding="20dp">
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tvOverview"
                     style="@style/DefaultTextStyle"
-                    android:textSize="20sp"
-                    tools:text="Fragment Title"
-                    android:text="@{viewModel.fragmentTitle}"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold" />
-
-                <TextView
-                    app:layout_constraintTop_toBottomOf="@id/tvOverview"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.fragmentTitle}"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Fragment Title" />
+
+                <TextView
                     android:id="@+id/tvSubOverview"
                     style="@style/DefaultTextStyle"
-                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    tools:text="Fragment Subtitle"
                     android:text="@{viewModel.fragmentSubtitle}"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvOverview"
+                    tools:text="Fragment Subtitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLaporanListing"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/overviewCard"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/rvLaporanListing"
-            tools:listitem="@layout/item_laporan" />
-        
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/emptyState"
-            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/overviewCard"
+            tools:listitem="@layout/item_laporan" />
+
+        <LinearLayout
+            android:id="@+id/emptyState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:background="#FFF7F7"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:background="#FFF7F7"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@id/overviewCard">
+
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:src="@drawable/ic_no_data"
-                />
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_no_data" />
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 style="@style/DefaultTextStyle"
-                android:textSize="20sp"
-                android:text="Data Tidak Ditemukan"
-                android:gravity="center"
-                />
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextGrayInfo"
-                android:text="Tidak ada laporan yang memenuhi kriteria ini"
                 android:gravity="center"
-                />
+                android:text="Data Tidak Ditemukan"
+                android:textSize="20sp" />
+
+            <TextView
+                style="@style/TextGrayInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Tidak ada laporan yang memenuhi kriteria ini" />
         </LinearLayout>
 
 

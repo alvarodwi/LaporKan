@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="item"
-        type="com.pedo.laporkan.data.model.relational.LaporanAndUser" />
+
+        <variable
+            name="item"
+            type="com.pedo.laporkan.data.model.relational.LaporanAndUser" />
+
         <variable
             name="onClickListener"
             type="com.pedo.laporkan.ui.laporan.listing.DaftarLaporanRVAdapter.OnClickListener" />
@@ -17,14 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:elevation="10dp"
-        app:cardCornerRadius="10dp"
         android:onClick="@{() -> onClickListener.onClick(item.laporan)}"
+        app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:id="@+id/itemTextContainer"
@@ -40,10 +43,10 @@
                     style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{item.laporan.judul}"
                     android:textColor="@color/colorBlueText"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="@{item.laporan.judul}"
                     tools:text="PDAM Kok Mati!!" />
 
                 <TextView
@@ -60,8 +63,8 @@
                     style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
                     android:text="@{item.user.printNameOnItem()}"
+                    android:textSize="12sp"
                     tools:text="Dibuat oleh Anda" />
             </LinearLayout>
 
@@ -69,11 +72,12 @@
                 android:id="@+id/imgItem"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:src="@color/colorBlueText"
-                app:loadImage="@{item.laporan.foto}"
+                android:contentDescription="TODO"
                 android:scaleType="centerCrop"
+                android:src="@color/colorBlueText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/itemTextContainer" />
+                app:layout_constraintTop_toBottomOf="@id/itemTextContainer"
+                app:loadImage="@{item.laporan.foto}" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/itemFooter"
@@ -89,11 +93,11 @@
                     style="@style/DefaultTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{item.laporan.printStatus()}"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@{item.laporan.printStatus()}"
                     tools:text="Status" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.laporan.detail.bottomsheet.BottomSheetMenuLaporanViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.laporan.detail.bottomsheet.BottomSheetMenuLaporanViewModel" />
     </data>
 
     <LinearLayout
@@ -19,24 +20,25 @@
             android:id="@+id/btnMenuDetail"
             style="@style/redButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
+
             <TextView
                 android:id="@+id/btnMenuDetailLabel"
-                android:text="@{viewModel.labelFragment}"
-                tools:text="MENU ADMIN"
-                android:textColor="@android:color/white"
-                android:layout_height="match_parent"
                 style="@style/redButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_width="match_parent"/>
+                android:text="@{viewModel.labelFragment}"
+                android:textColor="@android:color/white"
+                tools:text="MENU ADMIN" />
         </LinearLayout>
 
         <LinearLayout
-            android:onClick="@{() -> viewModel.onBuatTanggapanClicked()}"
             android:id="@+id/item1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.onBuatTanggapanClicked()}"
             android:orientation="horizontal"
             android:padding="20dp">
 
@@ -47,6 +49,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/ic_edit"
                 android:backgroundTint="@color/gray"
+                android:contentDescription="TODO"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -60,10 +63,11 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:onClick="@{() -> viewModel.onUbahStatusLaporanClicked()}"
             android:id="@+id/item2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.onUbahStatusLaporanClicked()}"
             android:orientation="horizontal"
             android:padding="20dp">
 
@@ -74,33 +78,36 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/ic_check_circle"
                 android:backgroundTint="@color/gray"
+                android:contentDescription="TODO"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:layout_toRightOf="@id/imgVector2"
                 android:id="@+id/tvLabel2"
                 style="@style/DefaultTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
+                android:layout_toEndOf="@id/imgVector2"
                 android:text="Ubah Status"
                 android:textSize="12sp" />
+
             <TextView
-                android:layout_below="@id/tvLabel2"
-                android:layout_toRightOf="@id/imgVector2"
                 android:id="@+id/tvSublabel2"
+                style="@style/TextGrayInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tvLabel2"
                 android:layout_marginStart="50dp"
-                android:text="@{viewModel.subLabelUbahStatus}"
-                style="@style/TextGrayInfo"/>
+                android:layout_toEndOf="@id/imgVector2"
+                android:text="@{viewModel.subLabelUbahStatus}" />
         </RelativeLayout>
 
         <LinearLayout
-            android:onClick="@{() -> viewModel.onTutupLaporanClicked()}"
             android:id="@+id/item3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.onTutupLaporanClicked()}"
             android:orientation="horizontal"
             android:padding="20dp">
 
@@ -111,6 +118,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/ic_clear"
                 android:backgroundTint="@color/gray"
+                android:contentDescription="TODO"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView

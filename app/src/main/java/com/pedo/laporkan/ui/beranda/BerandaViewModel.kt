@@ -3,23 +3,21 @@ package com.pedo.laporkan.ui.beranda
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.pedo.laporkan.data.repository.MainRepository
 import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_NAME
 import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_ROLE
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
 class BerandaViewModel(app : Application) : AndroidViewModel(app){
     private val repository = MainRepository.getInstance(app.applicationContext)
 
     private val viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     val berandaRole = MutableLiveData<String>()
     val berandaGreeting = MutableLiveData<String>()
+
+    val latestLaporan = repository.getLatestLaporan()
 
     private var _toProfil = MutableLiveData<Boolean>()
     val toProfil : LiveData<Boolean>

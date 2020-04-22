@@ -32,8 +32,7 @@ class Converters {
             value?.recycle()
             stream.close()
 
-            val output = Base64.encodeToString(outputStream,Base64.DEFAULT)
-            return output
+            return Base64.encodeToString(outputStream,Base64.DEFAULT)
         }
 
         @TypeConverter

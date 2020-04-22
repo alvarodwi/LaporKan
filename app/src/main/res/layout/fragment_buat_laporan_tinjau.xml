@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.pedo.laporkan.ui.laporan.buat.BuatLaporanViewModel" />
@@ -81,16 +82,18 @@
             android:id="@+id/imgTinjau"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="TODO"
             android:scaleType="centerCrop"
-            app:loadImage="@{viewModel.incompleteLaporan.foto}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblTitle" />
+            app:layout_constraintTop_toBottomOf="@id/lblTitle"
+            app:loadImage="@{viewModel.incompleteLaporan.foto}" />
 
         <androidx.core.widget.NestedScrollView
-            app:layout_constraintTop_toBottomOf="@id/imgTinjau"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@id/imgTinjau">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -98,26 +101,26 @@
 
                 <TextView
                     android:id="@+id/tvJudul"
+                    style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/DefaultTextStyle"
+                    android:text="@{viewModel.incompleteLaporan.judul}"
                     android:textColor="@color/colorBlueText"
                     android:textSize="18sp"
-                    android:text="@{viewModel.incompleteLaporan.judul}"
-                    tools:text="PDAM Kok Mati"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    tools:text="PDAM Kok Mati" />
 
                 <TextView
+                    android:id="@+id/tvIsi"
                     style="@style/DefaultTextStyle"
-                    android:textSize="12sp"
-                    android:text="@{viewModel.incompleteLaporan.isi}"
-                    tools:text="Kemarin malam, PDAM di daerah Antapani mati. Tepatnya di RW 02 Antapani Tengah. Diperkirakan ada kerusakan pada pipa PDAM."
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/tvJudul"
+                    android:text="@{viewModel.incompleteLaporan.isi}"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/tvIsi" />
+                    app:layout_constraintTop_toBottomOf="@id/tvJudul"
+                    tools:text="Kemarin malam, PDAM di daerah Antapani mati. Tepatnya di RW 02 Antapani Tengah. Diperkirakan ada kerusakan pada pipa PDAM." />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -131,13 +134,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Button
+            <TextView
                 android:id="@+id/btnLanjutkan"
                 style="@style/redButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Kirim Laporan"
-                android:onClick="@{() -> viewModel.onKirimLaporanClicked()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                tools:text="Lanjutkan" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

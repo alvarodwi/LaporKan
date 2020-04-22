@@ -9,22 +9,16 @@ import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_PROSES
 import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_SELESAI
 import kotlinx.android.parcel.Parcelize
 import org.threeten.bp.LocalDate
-import java.util.Date
 
 @Entity(
     tableName = "laporan",
-    foreignKeys = arrayOf(
-        ForeignKey(
-            entity = User::class,
-            parentColumns =["id"],
-            childColumns = ["id_user"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ),
-    indices = arrayOf(
-        Index(value = ["id_user"],name = "userId"),
-        Index(value = ["tanggal"],name = "tanggalLaporan")
-    )
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns =["id"],
+        childColumns = ["id_user"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index(value = ["id_user"],name = "userId"), Index(value = ["tanggal"],name = "tanggalLaporan")]
 )
 @Parcelize
 data class Laporan(
@@ -56,10 +50,10 @@ data class Laporan(
 
     fun printStatusWithDetail() : String{
         return when (status) {
-            StatusLaporan.BARU -> "Belum divalidasi petugas"
-            StatusLaporan.PROSES -> "Masih dalam proses"
-            StatusLaporan.GAGAL -> "Gagal di tahap validasi"
-            StatusLaporan.SELESAI -> "Sudah selesai"
+            StatusLaporan.BARU -> "Laporan Baru"
+            StatusLaporan.PROSES -> "Masih Diproses"
+            StatusLaporan.GAGAL -> "Gagal Divalidasi"
+            StatusLaporan.SELESAI -> "Sudah Selesai"
         }
     }
 }

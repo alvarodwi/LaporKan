@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.laporan.detail.DetailLaporanViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.laporan.detail.DetailLaporanViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,17 +40,18 @@
             <ImageView
                 android:id="@+id/imgDetail"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@color/colorBlueText"
+                android:layout_height="200dp"
+                android:contentDescription="TODO"
                 android:scaleType="centerCrop"
-                app:loadImage="@{viewModel.itemLaporan.foto}"
+                android:src="@color/colorBlueText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/appToolbar" />
+                app:layout_constraintTop_toBottomOf="@id/appToolbar"
+                app:loadImage="@{viewModel.itemLaporan.foto}" />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/btnContainer"
                 app:layout_constraintTop_toBottomOf="@id/imgDetail">
 
                 <LinearLayout
@@ -56,67 +59,114 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvTanggal"
-                        style="@style/DefaultTextStyle"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        app:printDate="@{viewModel.itemLaporan.tanggal}"
-                        tools:text="Senin,24 Februari 2020" />
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tvJudul"
-                        style="@style/DefaultTextStyle"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvStatus"
+                                style="@style/DefaultTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewModel.itemLaporan.convertStatus()}"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12sp"
+                                tools:text="Masih Dalam Proses" />
+
+                            <View
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@drawable/circle" />
+
+                            <TextView
+                                android:id="@+id/tvTanggal"
+                                style="@style/TextGrayInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                app:printDate="@{viewModel.itemLaporan.tanggal}"
+                                tools:text="Senin,24 Februari 2020" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvJudul"
+                            style="@style/DefaultTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{viewModel.itemLaporan.judul}"
+                            android:textColor="@color/colorBlueText"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:text="PDAM Kok Mati" />
+
+                        <TextView
+                            android:id="@+id/tvPembuat"
+                            style="@style/TextGrayInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.itemUser.nama}"
+                            android:textSize="12sp"
+                            tools:text="Dibuat oleh Budi Hartanto" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/colorPrimaryDark"
+                            app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+
+                        <TextView
+                            android:id="@+id/tvIsi"
+                            style="@style/DefaultTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_vertical_margin"
+                            android:text="@{viewModel.itemLaporan.isi}"
+                            android:textSize="12sp"
+                            tools:text="Kemarin malam, PDAM di daerah Antapani mati. Tepatnya di RW 02 Antapani Tengah. Diperkirakan ada kerusakan pada pipa PDAM." />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/viewTindakLanjut"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorBlueText"
-                        android:textSize="18sp"
-                        android:text="@{viewModel.itemLaporan.judul}"
-                        tools:text="PDAM Kok Mati" />
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvPembuat"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:text="@{viewModel.itemUser.nama}"
-                        tools:text="Dibuat oleh Budi Hartanto" />
-
-                    <TextView
-                        android:id="@+id/tvStatus"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="12sp"
-                        android:text="@{viewModel.itemLaporan.convertStatus()}"
-                        tools:text="Masih dalam proses" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/colorPrimaryDark"
-                        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
-
-                    <TextView
-                        android:id="@+id/tvIsi"
-                        style="@style/DefaultTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:textSize="12sp"
-                        android:text="@{viewModel.itemLaporan.isi}"
-                        tools:text="Kemarin malam, PDAM di daerah Antapani mati. Tepatnya di RW 02 Antapani Tengah. Diperkirakan ada kerusakan pada pipa PDAM." />
+                        <TextView
+                            style="@style/DefaultTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimaryDark"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="Tindak Lanjut"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvTanggapan"
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        tools:itemCount="3"
                         tools:listitem="@layout/item_tanggapan" />
+
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
@@ -126,18 +176,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:background="@color/colorPrimaryDark"
-                android:orientation="horizontal"
                 android:onClick="@{()-> viewModel.onMenuBtnClicked()}"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
                     android:id="@+id/labelMenuDetail"
-                    android:text="@{viewModel.labelMenuDetail}"
                     style="@style/redButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{viewModel.labelMenuDetail}"
                     tools:text="Menu Admin" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

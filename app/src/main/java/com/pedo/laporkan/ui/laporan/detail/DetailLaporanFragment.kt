@@ -1,23 +1,18 @@
 package com.pedo.laporkan.ui.laporan.detail
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pedo.laporkan.R
-
 import com.pedo.laporkan.databinding.FragmentDetailLaporanBinding
 import com.pedo.laporkan.ui.laporan.detail.bottomsheet.BottomSheetMenuLaporanDialog
-import com.pedo.laporkan.ui.profil.ProfilFragmentDirections
 import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
 import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_GAGAL
 import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_SELESAI
@@ -64,7 +59,7 @@ class DetailLaporanFragment : Fragment() {
                 binding.tvJudul.text = it.judul
                 binding.tvIsi.text = it.isi
                 binding.imgDetail.let {iv ->
-                    iv.visibility = View.VISIBLE
+                    iv.visibility = if(it.foto != null) View.VISIBLE else View.GONE
                     iv.setImageBitmap(it.foto)
                 }
                 binding.tvTanggal.text = laporKanDateFormat.format(it.tanggal)
@@ -84,11 +79,19 @@ class DetailLaporanFragment : Fragment() {
 
         viewModel.listTanggapan.observe(viewLifecycleOwner, Observer {
             it?.let {
-                val adapter = TanggapanRVAdapter()
-                adapter.submitList(it)
+                if(it.isEmpty()){
+                    binding.rvTanggapan.visibility = View.GONE
+                    binding.viewTindakLanjut.visibility = View.GONE
+                    //do nothing
+                }else{
+                    binding.rvTanggapan.visibility = View.VISIBLE
+                    binding.viewTindakLanjut.visibility = View.VISIBLE
+                    val adapter = TanggapanRVAdapter()
+                    adapter.submitList(it)
 
-                binding.rvTanggapan.layoutManager = LinearLayoutManager(context)
-                binding.rvTanggapan.adapter = adapter
+                    binding.rvTanggapan.layoutManager = LinearLayoutManager(context)
+                    binding.rvTanggapan.adapter = adapter
+                }
             }
         })
 
@@ -114,11 +117,6 @@ class DetailLaporanFragment : Fragment() {
         when(item.itemId){
             android.R.id.home -> {
                 activity?.onBackPressed()
-            }
-            R.id.edit_profile -> {
-                findNavController().navigate(
-                    ProfilFragmentDirections.profilToUbahProfil()
-                )
             }
         }
         return super.onOptionsItemSelected(item)

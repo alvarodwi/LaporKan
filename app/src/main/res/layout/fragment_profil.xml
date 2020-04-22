@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.profil.ProfilViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.profil.ProfilViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,26 +18,27 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/appToolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent"
             style="@style/redToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:elevation="10dp"
-            android:layout_height="?attr/actionBarSize">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:text="Profil Anda"
-                android:textSize="20sp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
 
         <ImageView
             android:id="@+id/bg_profil"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:contentDescription="TODO"
             android:src="@drawable/bg_card_primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,146 +47,148 @@
             android:id="@+id/tvRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/bg_profil"
-            tools:text="Administrator"
-            android:text="@{viewModel.userData.convertLevel()}"
-            app:layout_constraintStart_toStartOf="@id/bg_profil"
             android:layout_margin="30dp"
+            android:text="@{viewModel.userData.convertLevel()}"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:textColor="@android:color/white" />
+            app:layout_constraintBottom_toBottomOf="@id/bg_profil"
+            app:layout_constraintStart_toStartOf="@id/bg_profil"
+            tools:text="Administrator" />
 
         <TextView
             android:id="@+id/tvNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/tvRole"
-            tools:text="Budi Hartanto"
-            android:text="@{viewModel.userShortenedName}"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            app:layout_constraintStart_toStartOf="@id/bg_profil"
             android:layout_marginStart="30dp"
-            android:textColor="@android:color/white" />
-                <LinearLayout
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvNama"
-                    app:layout_constraintTop_toBottomOf="@id/appToolbar"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/containerLogout"
-                    android:padding="10dp"
-                    android:onClick="@{() -> viewModel.onLogoutClicked()}"
-                    android:background="@android:color/white"
-                    >
-                    <TextView
-                        android:layout_marginEnd="40dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvLogout"
-                        android:text="LOGOUT"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark"/>
-                </LinearLayout>
-            <LinearLayout
-                app:layout_constraintTop_toBottomOf="@id/bg_profil"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="20dp"
+            android:text="@{viewModel.userShortenedName}"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvRole"
+            app:layout_constraintStart_toStartOf="@id/bg_profil"
+            tools:text="Budi Hartanto" />
+
+        <LinearLayout
+            android:id="@+id/containerLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:onClick="@{() -> viewModel.onLogoutClicked()}"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@id/tvNama"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appToolbar">
+
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="LOGOUT"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_profil">
+
+            <TextView
+                android:id="@+id/tvId"
+                style="@style/InputTextViewGray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="vertical"
-                >
+                android:text="NIK" />
 
-                <TextView
-                    android:id="@+id/tvId"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfId"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/InputTextViewGray"
-                    android:text="NIK" />
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:text="@{viewModel.userData.id}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/tfId"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_height="wrap_content">
+            <TextView
+                style="@style/InputTextViewGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Nama Lengkap" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/DefaultTextStyle"
-                        android:focusable="false"
-                        android:text="@{viewModel.userData.id}"
-                        android:inputType="none" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfNamaLengkap"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/InputTextViewGray"
-                    android:text="Nama Lengkap" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/tfNamaLengkap"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/DefaultTextStyle"
-                        android:focusable="false"
-                        android:text="@{viewModel.userData.nama}"
-                        android:inputType="none|textMultiLine" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_marginTop="20dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/InputTextViewGray"
-                    android:text="Username" />
+                    android:focusable="false"
+                    android:inputType="none|textMultiLine"
+                    android:text="@{viewModel.userData.nama}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/tfUsername"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_height="wrap_content">
+            <TextView
+                style="@style/InputTextViewGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Username" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.userData.username}"
-                        android:focusable="false"
-                        style="@style/DefaultTextStyle"
-                        android:inputType="none" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfUsername"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_marginTop="20dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/InputTextViewGray"
-                    android:text="Nomor telepon" />
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:text="@{viewModel.userData.username}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+            <TextView
+                style="@style/InputTextViewGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Nomor telepon" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfTelp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
-                    android:id="@+id/tfTelp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        style="@style/DefaultTextStyle"
-                        android:text="@{viewModel.userData.telp}"
-                        android:inputType="none" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:text="@{viewModel.userData.telp}" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

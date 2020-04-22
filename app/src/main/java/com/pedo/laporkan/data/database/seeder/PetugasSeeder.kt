@@ -10,12 +10,12 @@ import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class PetugasSeeder(private val repo : MainRepository){
-    companion object{
-        val PETUGAS_JSON = "/PetugasJSON.json"
+class PetugasSeeder(private val repo: MainRepository) {
+    companion object {
+        const val PETUGAS_JSON = "/PetugasJSON.json"
     }
 
-    private lateinit var petugasList : ArrayList<User>
+    private lateinit var petugasList: ArrayList<User>
 
     init {
         try {
@@ -24,24 +24,36 @@ class PetugasSeeder(private val repo : MainRepository){
             val bufferedReader = BufferedReader(inputStreamReader)
 
             this.readJSONFile(bufferedReader)
-        }catch (e : Exception){
-            Log.d(DEFAULT_TAG,"Error Reading JSON",e)
+        } catch (e: Exception) {
+            Log.d(DEFAULT_TAG, "Error Reading JSON", e)
         }
     }
 
-    suspend fun seedPetugasData(){
-        for(petugas in petugasList){
+    suspend fun seedPetugasData() {
+        //before that, let's create new default admin
+        repo.createUser(
+            User(
+                id = "0",
+                nama = "Default Admin",
+                username = "root",
+                password = "admin",
+                level = UserLevel.ADMIN,
+                telp = "088888888888"
+            )
+        )
+
+        for (petugas in petugasList) {
             petugas.let {
                 it.level = UserLevel.PETUGAS
-                Log.d(DEFAULT_TAG,it.toString())
+                Log.d(DEFAULT_TAG, it.toString())
                 repo.createUser(it)
             }
         }
     }
 
-    private fun readJSONFile(br : BufferedReader){
+    private fun readJSONFile(br: BufferedReader) {
         val inputString = br.use { it.readText() }
 
-        petugasList = Gson().fromJson(inputString,object : TypeToken<List<User>>(){}.type)
+        petugasList = Gson().fromJson(inputString, object : TypeToken<List<User>>() {}.type)
     }
 }

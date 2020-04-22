@@ -129,7 +129,6 @@
             style="@style/DefaultTextStyle" />
 
         <LinearLayout
-            android:onClick="@{() -> viewModel.onKirimTanggapanBtnClicked()}"
             android:id="@+id/btnContainer"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -138,13 +137,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Button
-                android:onClick="@{() -> viewModel.onKirimTanggapanBtnClicked()}"
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:gravity="center"
                 android:id="@+id/btnLanjutkan"
-                style="@style/redButton"
                 android:text="Kirim Tanggapan"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                style="@style/redButton"
+                tools:text="Lanjutkan" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

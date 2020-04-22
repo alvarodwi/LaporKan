@@ -13,12 +13,12 @@ class DaftarLaporanRVAdapter(private val onClickListener: OnClickListener) : Lis
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DaftarLaporanRVAdapter.LaporanVH {
+    ): LaporanVH {
         val binding = ItemLaporanBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return LaporanVH(binding)
     }
 
-    override fun onBindViewHolder(holder: DaftarLaporanRVAdapter.LaporanVH, position: Int) {
+    override fun onBindViewHolder(holder: LaporanVH, position: Int) {
         holder.bind(getItem(position),onClickListener)
     }
 

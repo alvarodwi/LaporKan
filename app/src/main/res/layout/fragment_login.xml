@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.pedo.laporkan.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loginLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
-        android:id="@+id/loginLayout"
         android:background="@android:color/white"
+        android:padding="20dp"
         tools:context=".ui.login.LoginFragment">
 
         <TextView
@@ -23,11 +24,11 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginTop="40dp"
+            android:text="Selamat "
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@id/sapaanLoginWaktu"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Selamat " />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/sapaanLoginWaktu"
@@ -35,10 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:text="@{viewModel.greeting}"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="@{viewModel.greeting}"
             app:layout_constraintStart_toEndOf="@id/sapaanLoginTop"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="pagi" />
@@ -56,90 +57,91 @@
 
         <TextView
             android:id="@+id/tvUsername"
-            android:layout_marginTop="50dp"
+            style="@style/InputTextViewGray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/InputTextViewGray"
+            android:layout_marginTop="50dp"
             android:text="Username"
-            app:layout_constraintTop_toBottomOf="@id/sapaanLoginSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/sapaanLoginSubtitle" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="clear_text"
             android:id="@+id/tfUsername"
-            app:layout_constraintTop_toBottomOf="@id/tvUsername"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tvUsername">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.username}"
                 android:singleLine="true"
-                style="@style/DefaultTextStyle" />
+                android:text="@={viewModel.username}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvPassword"
-            android:layout_marginTop="20dp"
+            style="@style/InputTextViewGray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/InputTextViewGray"
+            android:layout_marginTop="20dp"
             android:text="Password"
-            app:layout_constraintTop_toBottomOf="@id/tfUsername"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tfUsername" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="password_toggle"
             android:id="@+id/tfPassword"
-            app:layout_constraintTop_toBottomOf="@id/tvPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@id/tvPassword">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@={viewModel.password}"
-                style="@style/DefaultTextStyle" />
+                android:text="@={viewModel.password}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-    
-    <ImageButton
-        android:id="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@id/tfPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="100dp"
-        android:layout_width="85dp"
-        android:onClick="@{() -> viewModel.onLogin()}"
-        android:src="@drawable/ic_arrow_forward"
-        android:background="@color/colorPrimaryDark"
-        android:layout_height="60dp"/>
-    
-    <TextView
-        android:id="@+id/labelRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/DefaultTextStyle"
-        android:text="Belum punya akun?"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextClickable"
-        android:onClick="@{()-> viewModel.onRegisterClick()}"
-        android:text="Daftar di sini"
-        underLineText="@{true}"
-        app:layout_constraintTop_toBottomOf="@id/labelRegister"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <ImageButton
+            android:id="@+id/btnLogin"
+            android:layout_width="85dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="100dp"
+            android:background="@color/colorPrimaryDark"
+            android:contentDescription="TODO"
+            android:onClick="@{() -> viewModel.onLogin()}"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfPassword" />
+
+        <TextView
+            android:id="@+id/labelRegister"
+            style="@style/DefaultTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum punya akun?"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnLogin" />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            style="@style/TextClickable"
+            underLineText="@{true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.onRegisterClick()}"
+            android:text="Daftar di sini"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelRegister" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -13,13 +13,10 @@ object Constants {
     }
 
     object KriteriaDaftarLaporan{
-        const val SEMUA_LAPORAN = "semua_laporan"
-        const val LAPORAN_YANG_DIBUAT_MASYARAKAT = "laporan_yang_dibuat_masyarakat"
-        const val LAPORAN_YANG_DITANGGAPI_USER = "laporan_yang_ditanggapi"
 
-        const val LAPORAN_BARU = "laporan_baru"
-        const val LAPORAN_DIPROSES = "laporan_proses"
-        const val LAPORAN_SELESAI = "laporan_selesai"
+        const val DAFTAR_LAPORAN_BARU = "laporan_baru"
+        const val DAFTAR_LAPORAN_DIPROSES = "laporan_proses"
+        const val DAFTAR_LAPORAN_SELESAI = "laporan_selesai"
     }
 
     object FilterDaftarLaporan{

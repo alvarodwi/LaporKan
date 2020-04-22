@@ -66,8 +66,8 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
         incompleteLaporan = Laporan(
             id = currentId,
             tanggal = currentTanggal,
-            judul = currentJudul,
-            isi = currentIsi,
+            judul = currentJudul.trim(),
+            isi = currentIsi.trim(),
             idUser = currentUserId!!,
             status = currentStatus
         )
@@ -111,9 +111,7 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
        isPhotoAttached.value.let {photo ->
            if(photo!=null){
                //assign photo to laporan
-               incompleteLaporan.let {
-                   it.foto = photo
-               }
+               incompleteLaporan.foto = photo
                Log.d(DEFAULT_TAG,getIncompleteLaporan().toString())
                _nextAction.value = 2
            }else{
@@ -150,10 +148,7 @@ class BuatLaporanViewModel(app: Application) : AndroidViewModel(app) {
 
     private suspend fun saveLaporanToDB(){
         val laporan = getIncompleteLaporan()
-        laporan.let{
-            //update tanggal to current time when this function called
-            it.tanggal = LocalDate.now()
-        }
+        laporan.tanggal = LocalDate.now()
         repository.insertLaporan(laporan)
     }
 

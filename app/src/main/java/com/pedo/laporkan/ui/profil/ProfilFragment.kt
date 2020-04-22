@@ -1,17 +1,16 @@
 package com.pedo.laporkan.ui.profil
 
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.*
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.pedo.laporkan.R
-
 import com.pedo.laporkan.databinding.FragmentProfilBinding
+
 /**
  * A simple [Fragment] subclass.
  */

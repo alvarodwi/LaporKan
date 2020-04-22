@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.report.listing.DaftarReportViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.report.listing.DaftarReportViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,99 +18,103 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/appToolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent"
             style="@style/redToolbar"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:text="Buat Report"
-                android:textSize="20sp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:id="@+id/labelTop"
+            style="@style/DefaultTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Pilih bulan laporan \nyang akan Anda cetak"
-            style="@style/DefaultTextStyle"
-            app:layout_constraintTop_toBottomOf="@id/appToolbar"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:text="Pilih bulan laporan \nyang akan Anda cetak"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/appToolbar" />
 
         <androidx.cardview.widget.CardView
-            android:onClick="@{() -> viewModel.onBulanIniClicked()}"
             android:id="@+id/cardBulanIni"
-            app:layout_constraintTop_toBottomOf="@id/labelTop"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:elevation="10dp"
-            app:cardCornerRadius="10dp">
+            android:onClick="@{() -> viewModel.onBulanIniClicked()}"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelTop">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="vertical"
                 android:padding="20dp">
-                <TextView
-                    style="@style/DefaultTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Report Bulan Ini" />
 
                 <TextView
                     style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Report ini akan berisi statistik pengaduan di bulan ini" />
+                    android:text="Report Bulan Ini"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Report ini akan berisi statistik pengaduan di bulan ini"
+                    android:textSize="12sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:onClick="@{() -> viewModel.onBulananClicked()}"
             android:id="@+id/cardBulanan"
-            app:layout_constraintTop_toBottomOf="@id/cardBulanIni"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:elevation="10dp"
-            app:cardCornerRadius="10dp">
+            android:onClick="@{() -> viewModel.onBulananClicked()}"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardBulanIni">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="vertical"
                 android:padding="20dp">
-                <TextView
-                    style="@style/DefaultTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Report Bulanan" />
 
                 <TextView
                     style="@style/DefaultTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="Report ini akan berisi statistik pengaduan\npada bulan yang Anda pilih" />
+                    android:text="Report Bulanan"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/DefaultTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Report ini akan berisi statistik pengaduan\npada bulan yang Anda pilih"
+                    android:textSize="12sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

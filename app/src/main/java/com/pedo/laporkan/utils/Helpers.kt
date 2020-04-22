@@ -3,7 +3,6 @@ package com.pedo.laporkan.utils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import org.threeten.bp.format.DateTimeFormatter
-import java.text.SimpleDateFormat
 import java.util.*
 
 object Helpers {
@@ -20,15 +19,15 @@ object Helpers {
         }
     }
 
-    fun shortenName(name : String) : String{
+    fun shortenName(name: String): String {
         val splitName = name.split(" ")
         var length = 0
         var resultName = ""
 
-        for(split in splitName){
-            if(split.length + length + 1 < 20){
+        for (split in splitName) {
+            if (split.length + length + 1 < 20) {
                 length += split.length + 1
-                resultName += split + " "
+                resultName += "$split "
             }
         }
 
@@ -36,5 +35,5 @@ object Helpers {
     }
 
     val indonesianLocale = Locale("id")
-    val laporKanDateFormat = DateTimeFormatter.ofPattern("EEEE, dd MMMM YYYY", indonesianLocale)
+    val laporKanDateFormat = DateTimeFormatter.ofPattern("EEEE, dd MMMM YYYY", indonesianLocale)!!
 }

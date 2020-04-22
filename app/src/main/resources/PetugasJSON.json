@@ -3,8 +3,7 @@
     "id": 1,
     "nama": "Default Petugas",
     "username": "root",
-    "password": "admin",
+    "password": "petugas",
     "telp": "088888888888",
-    "level": 2
   }
 ]

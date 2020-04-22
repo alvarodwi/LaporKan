@@ -2,27 +2,20 @@ package com.pedo.laporkan.data.model
 
 import androidx.room.*
 import org.threeten.bp.LocalDate
-import java.util.Date
 
 @Entity(
-    tableName = "tanggapan", foreignKeys = arrayOf(
-        ForeignKey(
-            entity = Laporan::class,
-            parentColumns = ["id"],
-            childColumns = ["id_laporan"],
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = User::class,
-            parentColumns = ["id"],
-            childColumns = ["id_petugas"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ),
-    indices = arrayOf(
-        Index(value = ["id_laporan"],name = "LaporanId"),
-        Index(value = ["id_petugas"],name = "PetugasId")
-    )
+    tableName = "tanggapan", foreignKeys = [ForeignKey(
+        entity = Laporan::class,
+        parentColumns = ["id"],
+        childColumns = ["id_laporan"],
+        onDelete = ForeignKey.CASCADE
+    ), ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["id_petugas"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index(value = ["id_laporan"],name = "LaporanId"), Index(value = ["id_petugas"],name = "PetugasId")]
 )
 data class Tanggapan(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

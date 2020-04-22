@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.register.RegisterViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,8 +60,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
-                android:text="@={viewModel.kodeAdmin}"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.kodeAdmin}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -77,9 +78,10 @@
             android:id="@+id/imgKode"
             android:layout_width="85dp"
             android:layout_height="60dp"
-            android:onClick="@{() -> viewModel.onKodeAdminClicked()}"
             android:layout_marginTop="50dp"
             android:background="@color/colorAccent"
+            android:contentDescription="TODO"
+            android:onClick="@{() -> viewModel.onKodeAdminClicked()}"
             android:src="@drawable/ic_arrow_forward"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

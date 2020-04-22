@@ -6,9 +6,11 @@ import com.pedo.laporkan.data.model.Tanggapan
 import com.pedo.laporkan.data.repository.MainRepository
 import com.pedo.laporkan.utils.Constants
 import com.pedo.laporkan.utils.Helpers.shortenName
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
-import java.util.*
 
 class BuatTanggapanViewModel(private val idLaporan: String,app : Application) : AndroidViewModel(app) {
     private val repository = MainRepository.getInstance(app.applicationContext)

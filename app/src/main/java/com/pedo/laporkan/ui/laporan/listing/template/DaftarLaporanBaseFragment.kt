@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pedo.laporkan.databinding.FragmentDaftarLaporanBaseBinding
-import com.pedo.laporkan.databinding.FragmentDaftarLaporanBinding
 import com.pedo.laporkan.ui.laporan.listing.DaftarLaporanFragmentDirections
 import com.pedo.laporkan.ui.laporan.listing.DaftarLaporanRVAdapter
 import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
@@ -61,7 +60,7 @@ abstract class DaftarLaporanBaseFragment(private val criteria: String) : Fragmen
 
         viewModel.listLaporan.observe(viewLifecycleOwner, Observer {
             it?.let{
-                if(!it.isNotEmpty()){
+                if(it.isEmpty()){
                     binding.emptyState.visibility = View.VISIBLE
                 }
                 Log.d(DEFAULT_TAG,it.toString())

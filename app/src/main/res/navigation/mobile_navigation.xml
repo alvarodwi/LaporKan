@@ -35,6 +35,9 @@
         <action
             android:id="@+id/berandaToProfil"
             app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/berandaToDetailLaporan"
+            app:destination="@id/detailLaporanFragment" />
     </fragment>
     <fragment
         android:id="@+id/daftarLaporanFragment"
@@ -107,7 +110,8 @@
         >
         <action
             android:id="@+id/register2ToLogin"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/registerAkunFragment" />
         <argument
             android:name="userData"
             app:argType="com.pedo.laporkan.data.model.User" />

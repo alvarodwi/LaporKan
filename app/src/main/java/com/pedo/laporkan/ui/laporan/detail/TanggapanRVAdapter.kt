@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pedo.laporkan.data.model.relational.TanggapanAndUser
 import com.pedo.laporkan.databinding.ItemTanggapanBinding
 
-class TanggapanRVAdapter() : ListAdapter<TanggapanAndUser, TanggapanRVAdapter.TanggapanVH>(DiffCallback) {
+class TanggapanRVAdapter : ListAdapter<TanggapanAndUser, TanggapanRVAdapter.TanggapanVH>(DiffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

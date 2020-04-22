@@ -21,6 +21,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:contentDescription="TODO"
             android:src="@drawable/bg_card_accent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -118,6 +119,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
@@ -125,6 +127,7 @@
                         android:id="@+id/imgMidLeftCard"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
+                        android:contentDescription="TODO"
                         android:src="@drawable/ic_add"
                         android:tint="@color/colorPrimaryDark"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -161,6 +164,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
@@ -168,6 +172,7 @@
                         android:id="@+id/imgMidRightCard"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
+                        android:contentDescription="TODO"
                         android:src="@drawable/ic_format_list_bulleted"
                         android:tint="@color/colorPrimaryDark"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +192,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:onClick="@{() -> viewModel.onMiddleCardClick()}"
                 android:id="@+id/berandaMiddleLarge"
                 android:layout_width="match_parent"
                 android:layout_height="125dp"
@@ -195,6 +199,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"
                 android:elevation="10dp"
+                android:onClick="@{() -> viewModel.onMiddleCardClick()}"
                 app:berandaItemVisibilityPetugas="@{viewModel.berandaRole}"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -204,12 +209,14 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
                     android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/imgMidLargeCard"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
+                        android:contentDescription="TODO"
                         android:src="@drawable/ic_format_list_bulleted"
                         android:tint="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -241,66 +248,43 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            style="@style/DefaultTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Laporan terkini"
-            android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            style="@style/DefaultTextStyle"
+            android:text="Laporan terkini"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/containerMid" />
 
-            app:layout_constraintTop_toBottomOf="@id/containerMid"/>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/berandaBottomCard"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLaporanTerkini"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
-            android:elevation="10dp"
-            app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/containerMid">
+            app:layout_constraintTop_toBottomOf="@id/containerMid"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_laporan_terkini" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/tvJudulLaporanTerkini"
-                    style="@style/DefaultTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorBlueText"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="PDAM Kok Mati!!" />
-
-                <ImageView
-                    android:id="@+id/fotoLaporanTerkini"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    tools:src="@drawable/ic_clear"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvJudulLaporanTerkini"
-                    />
-
-                <ImageView
-                    android:id="@+id/imgEmptyTerkini"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:elevation="5dp"
-                    android:src="@drawable/ic_no_data"
-                    android:background="@android:color/white"
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/imgEmptyTerkini"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/white"
+            android:contentDescription="TODO"
+            android:elevation="5dp"
+            android:src="@drawable/ic_no_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/containerMid" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

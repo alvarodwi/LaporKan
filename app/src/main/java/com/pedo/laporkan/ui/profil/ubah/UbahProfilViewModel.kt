@@ -9,7 +9,10 @@ import androidx.lifecycle.MutableLiveData
 import com.pedo.laporkan.data.repository.MainRepository
 import com.pedo.laporkan.utils.Constants
 import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class UbahProfilViewModel(app : Application) : AndroidViewModel(app) {
     private val repository = MainRepository.getInstance(app.applicationContext)
@@ -25,17 +28,13 @@ class UbahProfilViewModel(app : Application) : AndroidViewModel(app) {
     val toProfil: LiveData<Boolean>
         get() = _toProfil
 
-    private var _toUbahPassword = MutableLiveData<Boolean>()
-    val toUbahPassword: LiveData<Boolean>
-        get() = _toUbahPassword
-
     val idUser = MutableLiveData<String>()
     val namaLengkap = MutableLiveData<String>()
     val username = MutableLiveData<String>()
     val usernameErrorText = MutableLiveData<String>()
     val telp = MutableLiveData<String>()
 
-    val loggedUserId = repository.mainSharedPreferences.getString(Constants.SharedPrefKey.LOGGED_USER_ID, null)
+    private val loggedUserId = repository.mainSharedPreferences.getString(Constants.SharedPrefKey.LOGGED_USER_ID, null)
     val existingUserData = repository.getUserData(loggedUserId!!)
 
     fun onSimpanPerubahanClicked(){
@@ -59,7 +58,7 @@ class UbahProfilViewModel(app : Application) : AndroidViewModel(app) {
         }
 
         uiScope.launch {
-          updateUserData(currentNamaLengkap,currentUsername,currentTelp)
+          updateUserData(currentNamaLengkap.trim(),currentUsername.trim(),currentTelp.trim())
         }
         _toastMessage.value = "Profil berhasil diubah!"
         _toProfil.value = true

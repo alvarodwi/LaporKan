@@ -37,6 +37,17 @@ class LaporKanIntro : AppIntro(){
         ))
 
         addSlide(AppIntroFragment.newInstance(
+            "Fitur Report",
+            R.font.poppins,
+            "LaporKan butuh izin Anda untuk menyimpan report pada penyimpanan perangkat Anda",
+            R.font.poppins,
+            R.drawable.ic_reporting,
+            ContextCompat.getColor(this,R.color.colorPrimaryDark),
+            ContextCompat.getColor(this,android.R.color.white),
+            ContextCompat.getColor(this,android.R.color.white)
+        ))
+
+        addSlide(AppIntroFragment.newInstance(
             "Mulai Melapor!",
             R.font.poppins,
             "Tunggu apa lagi, ayo buat akun dan mulai melapor dengan LaporKan!",
@@ -48,6 +59,7 @@ class LaporKanIntro : AppIntro(){
         ))
 
         askForPermissions(arrayOf(Manifest.permission.CAMERA),2)
+        askForPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),3)
     }
 
     override fun onSkipPressed(currentFragment: Fragment?) {

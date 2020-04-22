@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.laporan.buat.BuatLaporanViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.laporan.buat.BuatLaporanViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,14 +45,14 @@
                 style="@style/DefaultTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tulis"
+                android:text="Tulis >"
                 android:textSize="14sp" />
 
             <TextView
                 style="@style/DefaultTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" > Lampiran"
+                android:text=" Lampiran"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -94,57 +95,73 @@
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblTitle" />
-            
+
         <FrameLayout
+            android:id="@+id/frameImage"
             android:layout_width="match_parent"
             android:layout_height="275dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblSubtitle">
+
             <ImageView
                 android:id="@+id/previewLampiran"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                />
+                android:contentDescription="TODO"
+                android:elevation="1dp"
+                android:scaleType="centerCrop" />
+
             <ImageView
-                android:id="@+id/btnRemoveImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_clear"
+                android:id="@+id/noImagePlaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="top|end"
                 android:layout_margin="10dp"
-                android:visibility="gone"
-                android:onClick="@{() -> viewModel.removePhotoFromLaporan()}"
-                />
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_no_data" />
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/btnRemoveImage"
+            style="@style/TextClickable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Hilangkan foto"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/frameImage"
+            app:underLineText="@{true}" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/btnContainer"
-            >
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/btnContainer">
+
             <ImageButton
-                android:onClick="@{() -> viewModel.onBtnCameraClicked()}"
                 android:id="@+id/capture_button"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_margin="24dp"
-                app:srcCompat="@android:drawable/ic_menu_camera"
+                android:contentDescription="TODO"
+                android:onClick="@{() -> viewModel.onBtnCameraClicked()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
+
             <ImageButton
-                android:onClick="@{() -> viewModel.onBtnGalleryClicked()}"
                 android:id="@+id/gallery_button"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_margin="24dp"
-                app:srcCompat="@android:drawable/ic_menu_gallery"
+                android:contentDescription="TODO"
+                android:onClick="@{() -> viewModel.onBtnGalleryClicked()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
         </LinearLayout>
 
         <LinearLayout
@@ -152,17 +169,19 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="@color/colorPrimaryDark"
+            android:onClick="@{() -> viewModel.onLampiranBtnClicked()}"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Button
+            <TextView
                 android:id="@+id/btnLanjutkan"
                 style="@style/redButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Lanjutkan"
-                android:onClick="@{() -> viewModel.onLampiranBtnClicked()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                tools:text="Lanjutkan" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

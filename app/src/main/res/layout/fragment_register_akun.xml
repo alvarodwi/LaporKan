@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pedo.laporkan.ui.register.RegisterViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pedo.laporkan.ui.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
         android:background="@android:color/white"
+        android:padding="20dp"
         tools:context=".ui.register.RegisterAkunFragment">
 
         <TextView
@@ -41,9 +42,9 @@
             style="@style/DefaultTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="2/2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle"
-            android:text="2/2" />
+            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
 
 
         <TextView
@@ -58,21 +59,21 @@
             app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="clear_text"
             android:id="@+id/tfUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="20"
-            app:layout_constraintTop_toBottomOf="@id/tvUsername"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tvUsername">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/DefaultTextStyle"
-                android:text="@={viewModel.username}"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@={viewModel.username}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -87,21 +88,21 @@
             app:layout_constraintTop_toBottomOf="@id/tfUsername" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="password_toggle"
             android:id="@+id/tfPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="32"
-            app:layout_constraintTop_toBottomOf="@id/tvPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@id/tvPassword">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/DefaultTextStyle"
-                android:text="@={viewModel.password}"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@={viewModel.password}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -116,22 +117,22 @@
             app:layout_constraintTop_toBottomOf="@id/tfPassword" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="password_toggle"
             android:id="@+id/tfPassword2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="32"
+            app:endIconMode="password_toggle"
             app:errorEnabled="true"
-            app:layout_constraintTop_toBottomOf="@id/tvPassword2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@id/tvPassword2">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.confirmPassword}"
-                style="@style/DefaultTextStyle"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@={viewModel.confirmPassword}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
@@ -139,8 +140,9 @@
             android:layout_width="85dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
-            android:onClick="@{() -> viewModel.onRegisterAkunClicked()}"
             android:background="@color/colorAccent"
+            android:contentDescription="TODO"
+            android:onClick="@{() -> viewModel.onRegisterAkunClicked()}"
             android:src="@drawable/ic_arrow_forward"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tfPassword2" />

@@ -12,7 +12,6 @@ import com.pedo.laporkan.data.database.typeconversion.Converters
 import com.pedo.laporkan.data.model.Laporan
 import com.pedo.laporkan.data.model.Tanggapan
 import com.pedo.laporkan.data.model.User
-import com.pedo.laporkan.data.model.UserLevel
 
 @Database(entities = [Laporan::class,Tanggapan::class, User::class],version = 1,exportSchema = false)
 @TypeConverters(Converters::class)
@@ -22,7 +21,7 @@ abstract class AppDatabase : RoomDatabase(){
     abstract val userDao : UserDao
 
     companion object{
-        var INSTANCE : AppDatabase? = null
+        private var INSTANCE : AppDatabase? = null
 
         fun getInstance(context : Context) : AppDatabase{
             synchronized(this){

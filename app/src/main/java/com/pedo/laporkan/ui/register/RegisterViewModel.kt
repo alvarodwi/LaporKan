@@ -9,17 +9,18 @@ import com.pedo.laporkan.data.repository.MainRepository
 import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
 import com.pedo.laporkan.utils.Constants.KODE_ADMIN
 import com.pedo.laporkan.utils.Helpers
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
-class RegisterViewModel(app: Application,val role : String) : AndroidViewModel(app) {
+class RegisterViewModel(app: Application, private val role : String) : AndroidViewModel(app) {
     private val repository = MainRepository.getInstance(app.applicationContext)
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private lateinit var incompleteUser : User
-
-    val labelId = MutableLiveData<String>()
 
     //live data for input
     val userId = MutableLiveData<String>()
@@ -86,7 +87,7 @@ class RegisterViewModel(app: Application,val role : String) : AndroidViewModel(a
             return
         }
 
-        incompleteUser = User(id = currentUserId,nama = currentUserFullName,telp = currentTelp,level = getUserLevel())
+        incompleteUser = User(id = currentUserId.trim(),nama = currentUserFullName.trim(),telp = currentTelp.trim(),level = getUserLevel())
         Log.d(DEFAULT_TAG,incompleteUser.toString())
         _nextAction.value = 1
     }
@@ -117,7 +118,7 @@ class RegisterViewModel(app: Application,val role : String) : AndroidViewModel(a
         }
 
         uiScope.launch {
-            updateRegisterData(currentUsername,currentPassword)
+            updateRegisterData(currentUsername.trim(),currentPassword.trim())
         }
     }
 
@@ -141,7 +142,7 @@ class RegisterViewModel(app: Application,val role : String) : AndroidViewModel(a
             return
         }
 
-        checkKodeAdmin(currentKodeAdmin)
+        checkKodeAdmin(currentKodeAdmin.trim())
     }
 
     private fun getUserLevel() : UserLevel{
@@ -170,12 +171,6 @@ class RegisterViewModel(app: Application,val role : String) : AndroidViewModel(a
         _nextAction.value = 2
     }
 
-    private suspend fun getLatestUserFromDB() : User?{
-        return withContext(Dispatchers.IO){
-            repository.getLatestUserData()
-        }
-    }
-
     private fun checkKodeAdmin(kode : String){
         if(kode == KODE_ADMIN){
             _nextAction.value = 3
@@ -189,7 +184,7 @@ class RegisterViewModel(app: Application,val role : String) : AndroidViewModel(a
         viewModelJob.cancel()
     }
 
-    class Factory(val app: Application,val role : String  = "NON_ADMIN") : ViewModelProvider.Factory{
+    class Factory(val app: Application, private val role : String  = "NON_ADMIN") : ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
             if(modelClass.isAssignableFrom(RegisterViewModel::class.java)){

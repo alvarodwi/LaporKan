@@ -1,7 +1,6 @@
 package com.pedo.laporkan.ui.login
 
 import android.app.Application
-import android.os.Handler
 import android.util.Log
 import androidx.core.content.edit
 import androidx.lifecycle.AndroidViewModel
@@ -14,7 +13,6 @@ import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
 import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_ID
 import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_NAME
 import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_ROLE
-import com.pedo.laporkan.utils.Helpers.DoubleTuple
 import com.pedo.laporkan.utils.Helpers.shortenName
 import kotlinx.coroutines.*
 import java.util.*
@@ -92,10 +90,10 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
         val c = Calendar.getInstance()
         val time = c.get(Calendar.HOUR_OF_DAY)
 
-        return when {
-            time >= 0 && time < 11 -> "pagi"
-            time >= 11 && time < 15 -> "siang"
-            time >= 15 && time < 18 -> "sore"
+        return when (time) {
+            in 0..10 -> "pagi"
+            in 11..14 -> "siang"
+            in 15..17 -> "sore"
             else -> "malam"
         }
     }
@@ -139,11 +137,11 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    suspend fun checkingCredentials(username: String, password: String): Boolean {
+    private suspend fun checkingCredentials(username: String, password: String): Boolean {
         val isUsernameExist = getUserFromDB(username)
         if (isUsernameExist != null) {
             val dataUser = getUserFromDB(username, password)
-            if (dataUser != null) {
+            return if (dataUser != null) {
                 Log.d(DEFAULT_TAG, shortenName(dataUser.nama))
                 repository.mainSharedPreferences.edit {
                     putString(LOGGED_USER_ID,dataUser.id)
@@ -152,10 +150,10 @@ class LoginViewModel(app: Application) : AndroidViewModel(app) {
                     this.apply()
                 }
                 _authenticationState.value = AuthenticationState.SUKSES
-                return true
+                true
             } else {
                 _authenticationState.value = AuthenticationState.PASSWORD_SALAH
-                return false
+                false
             }
         } else {
             _authenticationState.value = AuthenticationState.USERNAME_SALAH

@@ -5,19 +5,20 @@ import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.pedo.laporkan.databinding.FragmentBuatLaporanLampiranBinding
 import com.pedo.laporkan.utils.Constants.IMAGE_TYPE
 import com.pedo.laporkan.utils.Constants.REQUEST_CODE_CAMERA
@@ -42,6 +43,7 @@ class BuatLaporanLampiranFragment : Fragment() {
         binding = FragmentBuatLaporanLampiranBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setHasOptionsMenu(true)
 
         val arguments = BuatLaporanLampiranFragmentArgs.fromBundle(arguments!!)
         viewModel.setIncompleteLaporan(arguments.itemLaporan)
@@ -51,6 +53,26 @@ class BuatLaporanLampiranFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity).setSupportActionBar(binding.appToolbar)
+        val toolbar = (activity as AppCompatActivity).supportActionBar
+        toolbar?.let{
+            it.title = ""
+            it.setDisplayHomeAsUpEnabled(true)
+        }
+
+        binding.btnRemoveImage.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Hilangkan Foto")
+                .setMessage("Anda akan menghapus foto ini dari lampiran laporan Anda")
+                .setPositiveButton("Ya") { _, _ ->
+                    viewModel.removePhotoFromLaporan()
+                }
+                .setNegativeButton("Tidak"){ _,_ ->
+                    //do nothing
+                }
+                .show()
+        }
 
         viewModel.isPhotoAttached.observe(viewLifecycleOwner, Observer {
             if(it != null){
@@ -142,5 +164,14 @@ class BuatLaporanLampiranFragment : Fragment() {
         }else{
             MediaStore.Images.Media.getBitmap(contentResolver,path)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                activity?.onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -4,61 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.pedo.laporkan.utils.Helpers"/>
-    <variable
-        name="item"
-        type="com.pedo.laporkan.data.model.relational.TanggapanAndUser" />
+
+        <import type="com.pedo.laporkan.utils.Helpers" />
+
+        <variable
+            name="item"
+            type="com.pedo.laporkan.data.model.relational.TanggapanAndUser" />
     </data>
 
-    <androidx.cardview.widget.CardView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+        android:padding="5dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/tvPetugas"
+            style="@style/DefaultTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp">
+            android:text="@{item.user.shortName()}"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Yudha Prasetya" />
 
-            <TextView
-                android:id="@+id/tvPetugas"
-                style="@style/DefaultTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:text="@{item.user.shortName()}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Yudha Prasetya" />
+        <TextView
+            android:id="@+id/tvTanggal"
+            style="@style/TextGrayInfo"
+            printDate="@{item.tanggapan.tanggal}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPetugas"
+            tools:text="Selasa, 25 Februari 2020" />
 
-            <TextView
-                android:id="@+id/tvTanggapan"
-                style="@style/DefaultTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@{item.tanggapan.tanggapan}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPetugas"
-                tools:text="Terimakasih atas laporannya Kak Budi, kami telah memeriksa dan memang benar telah terjadi kerusakan pada pipa PDAM di daerah Anda. Kami telah limpahkan kewenangan laporan ini ke PDAM Persero, dan dalam waktu dekat mereka akan mengirimkan teknisi langsung ke daerah Anda" />
-
-            <TextView
-                android:id="@+id/tvTanggal"
-                style="@style/TextGrayInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@id/tvTanggapan"
-                app:layout_constraintStart_toStartOf="parent"
-                printDate="@{item.tanggapan.tanggal}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="Selasa, 25 Februari 2020" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tvTanggapan"
+            style="@style/DefaultTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{item.tanggapan.tanggapan}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTanggal"
+            tools:text="Terimakasih atas laporannya Kak Budi, kami telah memeriksa dan memang benar telah terjadi kerusakan pada pipa PDAM di daerah Anda. Kami telah limpahkan kewenangan laporan ini ke PDAM Persero, dan dalam waktu dekat mereka akan mengirimkan teknisi langsung ke daerah Anda" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

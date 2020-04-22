@@ -9,11 +9,10 @@ import com.pedo.laporkan.data.model.User
 import com.pedo.laporkan.utils.Constants.SP_LAPORKAN
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.*
 
 class MainRepository(context: Context) {
     companion object {
-        var INSTANCE: MainRepository? = null
+        private var INSTANCE: MainRepository? = null
 
         fun getInstance(context: Context): MainRepository {
             var instance = INSTANCE
@@ -26,7 +25,7 @@ class MainRepository(context: Context) {
 
     //init
     private val database = AppDatabase.getInstance(context)
-    val mainSharedPreferences = context.getSharedPreferences(SP_LAPORKAN, Context.MODE_PRIVATE)
+    val mainSharedPreferences = context.getSharedPreferences(SP_LAPORKAN, Context.MODE_PRIVATE)!!
 
     //room related function
     //laporan
@@ -34,13 +33,13 @@ class MainRepository(context: Context) {
 
     fun getLaporan(id: String) = database.laporanDao.getLaporan(id)
 
-    fun getAllLaporan() = database.laporanDao.getAllLaporan()
-
-    fun getLaporanByUser(userId: String) = database.laporanDao.getLaporanByUser(userId)
-
     fun getLaporanByStatus(status: StatusLaporan) = database.laporanDao.getLaporanByStatus(status)
 
-//    fun getLaporanBetweenDate(upperLimit : String,lowerLimit: String) = database.laporanDao.getLaporanBetweenDates(upperLimit,lowerLimit)
+    fun getLatestLaporan() = database.laporanDao.getLatestLaporan()
+
+    fun getLaporanReportByDate(dateFrom : String,dateTo : String) = database.laporanDao.getLaporanReportByDates(dateFrom,dateTo)
+    fun getPetugasReportByDate(dateFrom : String,dateTo : String) = database.laporanDao.getPetugasReportByDates(dateFrom,dateTo)
+    fun getUserReportByDate(dateFrom : String,dateTo : String) = database.laporanDao.getUserReportByDates(dateFrom,dateTo)
 
     suspend fun insertLaporan(data: Laporan) {
         withContext(Dispatchers.IO) {
@@ -55,8 +54,6 @@ class MainRepository(context: Context) {
     }
 
     //tanggapan
-    fun getTanggapanByLaporan(laporanId: String) =
-        database.tanggapanDao.getTanggapanOnLaporan(laporanId)
 
     suspend fun insertTanggapan(data: Tanggapan) {
         withContext(Dispatchers.IO) {
@@ -69,8 +66,6 @@ class MainRepository(context: Context) {
 
     fun getUserData(username: String, password: String) =
         database.userDao.getUserData(username, password)
-
-    fun getLatestUserData() = database.userDao.getLatestUserData()
 
     fun checkUsername(username: String) = database.userDao.checkUsername(username)
 

@@ -8,7 +8,7 @@ import com.pedo.laporkan.utils.Helpers.shortenName
 import kotlinx.android.parcel.Parcelize
 
 //class untuk user dalam aplikasi
-@Entity(tableName = "user",indices = arrayOf(Index(value = ["username"],unique = true)))
+@Entity(tableName = "user",indices = [Index(value = ["username"],unique = true)])
 @Parcelize
 data class User(
     @PrimaryKey var id : String,

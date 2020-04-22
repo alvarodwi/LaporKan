@@ -46,8 +46,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     //lifecycle
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     //room
@@ -56,9 +56,6 @@ dependencies {
     //coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    //image loading
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     //gson
     implementation 'com.google.code.gson:gson:2.8.6'
 
@@ -66,10 +63,13 @@ dependencies {
     //hehe mager
     //UI Plugins!
     implementation 'com.github.dewinjm:monthyear-picker:1.0.2'
-    //Java Time Backported, bisa ilang kalo pake Anstud Canary
+    //Java Time Backported
+    //bisa di hilangkan bila Android Studio 4.0 dan fitur 'desugaring' digunakan
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.3'
     //stetho
     implementation 'com.facebook.stetho:stetho:1.5.1'
     //app intro
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
+    //itext, using ver 5 cause ver 7 has some nasty API restrictions =(
+    implementation 'com.itextpdf:itextg:5.5.10'
 }

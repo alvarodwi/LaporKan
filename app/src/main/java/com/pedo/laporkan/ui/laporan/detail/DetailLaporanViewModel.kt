@@ -1,27 +1,18 @@
 package com.pedo.laporkan.ui.laporan.detail
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.pedo.laporkan.data.model.Laporan
-import com.pedo.laporkan.data.model.relational.LaporanAndUserWithTanggapan
 import com.pedo.laporkan.data.repository.MainRepository
-import com.pedo.laporkan.utils.Constants.DEFAULT_TAG
-import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_GAGAL
-import com.pedo.laporkan.utils.Constants.FilterDaftarLaporan.LAPORAN_SELESAI
 import com.pedo.laporkan.utils.Constants.SharedPrefKey.LOGGED_USER_ROLE
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.withContext
 
 class DetailLaporanViewModel(idLaporan: String, app: Application) : AndroidViewModel(app) {
     private val repository = MainRepository.getInstance(app.applicationContext)
 
     private val viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val bundleLaporan = repository.getDetailLaporan(idLaporan)
+    private val bundleLaporan = repository.getDetailLaporan(idLaporan)
 
     val menuLaporanArgs = MutableLiveData<Laporan>()
     val showMenuDetail = MutableLiveData<Boolean>()

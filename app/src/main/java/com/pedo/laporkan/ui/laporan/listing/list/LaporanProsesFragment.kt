@@ -4,4 +4,4 @@ import com.pedo.laporkan.ui.laporan.listing.template.DaftarLaporanBaseFragment
 import com.pedo.laporkan.utils.Constants.KriteriaDaftarLaporan
 
 
-class LaporanProsesFragment: DaftarLaporanBaseFragment(KriteriaDaftarLaporan.LAPORAN_DIPROSES)
+class LaporanProsesFragment: DaftarLaporanBaseFragment(KriteriaDaftarLaporan.DAFTAR_LAPORAN_DIPROSES)

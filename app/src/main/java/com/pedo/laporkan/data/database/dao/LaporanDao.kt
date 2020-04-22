@@ -1,52 +1,57 @@
 package com.pedo.laporkan.data.database.dao
 
-import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.pedo.laporkan.data.model.Laporan
 import com.pedo.laporkan.data.model.StatusLaporan
 import com.pedo.laporkan.data.model.relational.LaporanAndUser
 import com.pedo.laporkan.data.model.relational.LaporanAndUserWithTanggapan
-import com.pedo.laporkan.data.model.relational.LaporanWithTanggapan
-import com.pedo.laporkan.data.model.relational.ReportResponse
-import java.util.*
+import com.pedo.laporkan.data.model.report.LaporanReportResponse
+import com.pedo.laporkan.data.model.report.UserReportResponse
 
 @Dao
 interface LaporanDao {
     @Query("SELECT * from laporan ORDER BY tanggal")
-    fun getAllLaporan() : LiveData<List<Laporan>>
+    fun getAllLaporan(): LiveData<List<Laporan>>
+
+    @Query("SELECT * from laporan ORDER BY tanggal DESC LIMIT 3")
+    fun getLatestLaporan(): LiveData<List<Laporan>>
 
     @Transaction
     @Query("SELECT * from laporan where status = :status ORDER BY tanggal")
-    fun getLaporanByStatus(status : StatusLaporan) : LiveData<List<LaporanAndUser>>
-
-    @Query("SELECT * from laporan where id_user = :idUser ORDER BY tanggal")
-    fun getLaporanByUser(idUser : String) : LiveData<List<Laporan>>
-
-    @Query("SELECT * from laporan where id_user = :idUser and status = :status ORDER BY tanggal")
-    fun getLaporanWithFilter(idUser: String,status : StatusLaporan) : LiveData<List<Laporan>>
+    fun getLaporanByStatus(status: StatusLaporan): LiveData<List<LaporanAndUser>>
 
     @Transaction
     @Query("SELECT * from laporan where id = :id")
-    fun getLaporan(id : String) : LiveData<LaporanAndUser>
+    fun getLaporan(id: String): LiveData<LaporanAndUser>
 
     @Transaction
     @Query("SELECT * from laporan where id = :id")
-    fun getDetailLaporan(id: String) : LiveData<LaporanAndUserWithTanggapan>
+    fun getDetailLaporan(id: String): LiveData<LaporanAndUserWithTanggapan>
 
-//    @Transaction
-//    @Query("SELECT * from laporan "+
-//            "inner join tanggapan ON tanggapan.id_laporan = laporan.id" +
-//            "inner join user ON user.id = laporan.id_user" +
-//            "where laporan.tanggal between Date(:upperLimit) and Date(:lowerLimit)"
-//    )
-//    fun getLaporanBetweenDates(upperLimit : String, lowerLimit : String) : Cursor
+    @Query("SELECT COUNT(status) as laporanCount,status from laporan where laporan.tanggal between Date(:dateFrom) and Date(:dateTo) GROUP BY laporan.status")
+    fun getLaporanReportByDates(
+        dateFrom: String,
+        dateTo: String
+    ): LiveData<List<LaporanReportResponse>>
+
+    @Query("SELECT COUNT(id_petugas) as userCount,id_petugas as userId from laporan inner join tanggapan ON tanggapan.id_laporan = laporan.id where laporan.tanggal between Date(:dateFrom) and Date(:dateTo) GROUP BY tanggapan.id_petugas")
+    fun getPetugasReportByDates(
+        dateFrom: String,
+        dateTo: String
+    ) : LiveData<List<UserReportResponse>>
+
+    @Query("SELECT COUNT(id_user) as userCount,id_user as userId from laporan where laporan.tanggal between Date(:dateFrom) and Date(:dateTo) GROUP BY laporan.id_user")
+    fun getUserReportByDates(
+        dateFrom: String,
+        dateTo: String
+    ) : LiveData<List<UserReportResponse>>
 
     @Insert
-    fun insertLaporan(data : Laporan)
+    fun insertLaporan(data: Laporan)
 
     @Update
-    fun updateLaporan(data : Laporan)
+    fun updateLaporan(data: Laporan)
 
     //there are no delete operation on laporan
 }

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.pedo.laporkan.ui.register.RegisterViewModel" />
@@ -13,8 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
         android:background="@android:color/white"
+        android:padding="20dp"
         tools:context=".ui.register.RegisterDataFragment">
 
         <TextView
@@ -42,9 +44,9 @@
             style="@style/DefaultTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="1/2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle"
-            android:text="1/2" />
+            app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
 
 
         <TextView
@@ -59,22 +61,22 @@
             app:layout_constraintTop_toBottomOf="@id/sapaanRegisterSubtitle" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="clear_text"
             android:id="@+id/tfId"
-            app:counterMaxLength="16"
-            app:counterEnabled="true"
-            app:errorEnabled="true"
-            app:layout_constraintTop_toBottomOf="@id/tvId"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:layout_constraintTop_toBottomOf="@id/tvId">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/DefaultTextStyle"
-                android:text="@={viewModel.userId}"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="@={viewModel.userId}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -89,21 +91,21 @@
             app:layout_constraintTop_toBottomOf="@id/tfId" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="clear_text"
             android:id="@+id/tfNama"
-            app:counterMaxLength="35"
-            app:counterEnabled="true"
-            app:layout_constraintTop_toBottomOf="@id/tvNama"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="35"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tvNama">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/DefaultTextStyle"
-                android:text="@={viewModel.userFullName}"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@={viewModel.userFullName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -118,21 +120,21 @@
             app:layout_constraintTop_toBottomOf="@id/tfNama" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            app:endIconMode="clear_text"
             android:id="@+id/tfTelp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="13"
-            app:layout_constraintTop_toBottomOf="@id/tvTelp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content">
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tvTelp">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/DefaultTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/DefaultTextStyle"
-                android:text="@={viewModel.userTelp}"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="@={viewModel.userTelp}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
@@ -140,21 +142,34 @@
             android:layout_width="85dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
-            android:onClick="@{() -> viewModel.onRegisterDataClicked()}"
             android:background="@color/colorAccent"
+            android:contentDescription="TODO"
+            android:onClick="@{() -> viewModel.onRegisterDataClicked()}"
             android:src="@drawable/ic_arrow_forward"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tfTelp" />
 
         <TextView
-            android:visibility="@{viewModel.isAdminRegistration ? View.GONE : View.VISIBLE}"
             android:id="@+id/tvKodeRegistrasi"
             style="@style/TextClickable"
+            underLineText="@{true}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/punya_kode_registrasi"
             android:onClick="@{() -> viewModel.onHasKodeAdminClicked()}"
+            android:text="@string/punya_kode_registrasi"
             android:textStyle="bold"
+            android:visibility="@{viewModel.isAdminRegistration ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnRegister" />
+
+        <TextView
+            android:id="@+id/tvAdminInfo"
+            style="@style/TextGrayInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anda melanjutkan\nregistrasi sebagai Admin"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isAdminRegistration ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/btnRegister" />
     </androidx.constraintlayout.widget.ConstraintLayout>

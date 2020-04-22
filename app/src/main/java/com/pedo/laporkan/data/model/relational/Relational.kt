@@ -6,14 +6,6 @@ import com.pedo.laporkan.data.model.Laporan
 import com.pedo.laporkan.data.model.Tanggapan
 import com.pedo.laporkan.data.model.User
 
-class LaporanWithTanggapan(
-    @Embedded
-    val laporan : Laporan,
-
-    @Relation(parentColumn = "id",entityColumn = "id_laporan",entity = Tanggapan::class)
-    val listTanggapan : List<Tanggapan>
-)
-
 data class TanggapanAndUser(
     @Embedded
     val tanggapan : Tanggapan,
@@ -35,10 +27,4 @@ data class LaporanAndUserWithTanggapan(
 
     @Relation(parentColumn = "id",entityColumn = "id_laporan",entity = Tanggapan::class)
     val listTanggapanAndUser : List<TanggapanAndUser>
-)
-
-data class ReportResponse(
-    val laporanCount : Int,
-    val masyarakatCount : Int,
-    val petugasCount : Int
 )

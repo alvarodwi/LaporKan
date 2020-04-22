@@ -6,12 +6,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.pedo.laporkan.data.model.Laporan
-import com.pedo.laporkan.ui.laporan.listing.DaftarLaporanRVAdapter
 import com.pedo.laporkan.utils.Helpers.laporKanDateFormat
 import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
-import java.util.*
 
 @BindingAdapter("underLineText")
 fun TextView.underLineText(flag: Boolean) {

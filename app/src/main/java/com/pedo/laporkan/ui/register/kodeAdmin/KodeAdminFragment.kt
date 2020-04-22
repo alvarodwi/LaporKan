@@ -1,18 +1,15 @@
 package com.pedo.laporkan.ui.register.kodeAdmin
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-
-import com.pedo.laporkan.R
 import com.pedo.laporkan.databinding.FragmentKodeAdminBinding
-import com.pedo.laporkan.databinding.FragmentRegisterDataBinding
 import com.pedo.laporkan.ui.register.RegisterViewModel
 
 /**
@@ -45,6 +42,7 @@ class KodeAdminFragment : Fragment() {
             it?.let {
                 when(it){
                     3 -> {
+                        Toast.makeText(context,"Kode Admin sesuai!",Toast.LENGTH_LONG).show()
                         findNavController().navigate(
                             KodeAdminFragmentDirections.kodeAdminToRegister().setUserRole("ADMIN")
                         )

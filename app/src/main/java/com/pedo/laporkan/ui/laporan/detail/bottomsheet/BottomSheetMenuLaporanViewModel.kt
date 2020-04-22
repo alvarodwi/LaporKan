@@ -62,8 +62,10 @@ class BottomSheetMenuLaporanViewModel(private val itemLaporan: Laporan,app : App
         }
     }
 
+    fun getStatusLaporan() = itemLaporan.convertStatus()
+
     fun ubahStatusLaporan(){
-        var oldLaporan = itemLaporan
+        val oldLaporan = itemLaporan
         when(oldLaporan.convertStatus()){
             LAPORAN_BARU -> {
                 oldLaporan.status = StatusLaporan.PROSES
@@ -83,7 +85,7 @@ class BottomSheetMenuLaporanViewModel(private val itemLaporan: Laporan,app : App
     }
 
     fun tutupLaporan(){
-        var oldLaporan = itemLaporan
+        val oldLaporan = itemLaporan
         oldLaporan.status = StatusLaporan.GAGAL
 
         Log.d(DEFAULT_TAG,oldLaporan.toString())
